@@ -12,7 +12,7 @@ namespace senai.spmg.webAPI.Interfaces
 
         Especialidade BuscarPorId(int id);
 
-        Especialidade BuscarPorNome(string especialidade);
+        Especialidade BuscarPorEspecialidade(string especialidade);
 
         void Cadastrar(Especialidade novoEspecialidade);
 

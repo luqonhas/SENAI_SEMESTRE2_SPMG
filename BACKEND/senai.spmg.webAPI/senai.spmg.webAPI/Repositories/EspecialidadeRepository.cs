@@ -1,4 +1,5 @@
-﻿using senai.spmg.webAPI.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using senai.spmg.webAPI.Contexts;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
 using System;
@@ -14,32 +15,59 @@ namespace senai.spmg.webAPI.Repositories
 
         public bool Atualizar(int id, Especialidade especialidadeAtualizado)
         {
-            throw new NotImplementedException();
+            Especialidade especialidadeBuscada = BuscarPorId(id);
+
+            Especialidade especialidadeBuscar = ctx.Especialidades.FirstOrDefault(x => x.Especialidade1 == especialidadeAtualizado.Especialidade1);
+
+            if (especialidadeAtualizado.Especialidade1 != null && especialidadeBuscar == null)
+            {
+                especialidadeBuscada.Especialidade1 = especialidadeAtualizado.Especialidade1;
+
+                ctx.Especialidades.Update(especialidadeBuscada);
+
+                ctx.SaveChanges();
+
+                return true;
+            }
+            return false;
         }
 
         public Especialidade BuscarPorId(int id)
         {
-            throw new NotImplementedException();
+            return ctx.Especialidades.Include(x => x.Medicos).FirstOrDefault(x => x.IdEspecialidade == id);
         }
 
-        public Especialidade BuscarPorNome(string especialidade)
+        public Especialidade BuscarPorEspecialidade(string especialidade)
         {
-            throw new NotImplementedException();
+            Especialidade especialidadeBuscada = ctx.Especialidades.FirstOrDefault(x => x.Especialidade1 == especialidade);
+
+            if (especialidadeBuscada != null)
+            {
+                return especialidadeBuscada;
+            }
+
+            return null;
         }
 
         public void Cadastrar(Especialidade novoEspecialidade)
         {
-            throw new NotImplementedException();
+            ctx.Especialidades.Add(novoEspecialidade);
+
+            ctx.SaveChanges();
         }
 
         public void Deletar(int id)
         {
-            throw new NotImplementedException();
+            ctx.Especialidades.Remove(BuscarPorId(id));
+
+            ctx.SaveChanges();
         }
 
         public List<Especialidade> Listar()
         {
-            throw new NotImplementedException();
+            return ctx.Especialidades.Include(x => x.Medicos).ToList();
         }
+
+
     }
 }
