@@ -103,7 +103,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Administrador, Médico")]
+        [Authorize(Roles = "Administrador")]
         [HttpPatch("agendamentos/situacao/{id}")]
         public IActionResult PatchSit(int id, ConsultaViewModel situacaoAtualizada)
         {
@@ -115,24 +115,43 @@ namespace senai.spmg.webAPI.Controllers
 
                 if (consultaBuscada != null)
                 {
-                    consultaBuscada = new Consulta
-                    {
-                        IdSituacao = situacaoAtualizada.idSituacao
-                    };
-
-                    if (situacaoAtualizada.idSituacao == 1 && idUsuario != 1)
-                    {
-                        return NotFound("Somente usuários com a permissão de 'Administrador' podem cancelar uma consulta!");
-                    }
-                    if (idUsuario == 2 || idUsuario == 3)
+                    if (situacaoAtualizada.idSituacao != 1 || situacaoAtualizada.idSituacao != 2 || situacaoAtualizada.idSituacao != 3)
                     {
                         if (situacaoAtualizada.idSituacao == 2 || situacaoAtualizada.idSituacao == 3)
                         {
+                            if (situacaoAtualizada.idSituacao == 2 || situacaoAtualizada.idSituacao == 3)
+                            {
+                                if (situacaoAtualizada.idSituacao == 1 && idUsuario != 1 || idUsuario != 2 || situacaoAtualizada.idSituacao == 3 && idUsuario != 1 || idUsuario != 2)
+                                {
+                                    return NotFound("Somente usuários com a permissão de 'Administrador' ou 'Médico' podem marcar uma consulta como realizada ou agendada!");
+                                }
+
+                                consultaBuscada = new Consulta
+                                {
+                                    IdSituacao = situacaoAtualizada.idSituacao
+                                };
+
+                                _consultaRepository.Atualizar(id, consultaBuscada);
+
+                                return StatusCode(204);
+                            }
+
+                            if (situacaoAtualizada.idSituacao == 2 && idUsuario != 1)
+                            {
+                                return NotFound("Somente usuários com a permissão de 'Administrador' podem marcar uma consulta como cancelada!");
+                            }
+
+                            consultaBuscada = new Consulta
+                            {
+                                IdSituacao = situacaoAtualizada.idSituacao
+                            };
+
                             _consultaRepository.Atualizar(id, consultaBuscada);
 
                             return StatusCode(204);
                         }
                     }
+                    return BadRequest("Situação inserida não existente!");
                 }
                 return BadRequest("Nenhuma consulta encontrada!");
             }
