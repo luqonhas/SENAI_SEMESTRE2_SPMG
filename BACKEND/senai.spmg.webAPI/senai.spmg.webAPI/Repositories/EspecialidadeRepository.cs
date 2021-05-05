@@ -17,11 +17,11 @@ namespace senai.spmg.webAPI.Repositories
         {
             Especialidade especialidadeBuscada = BuscarPorId(id);
 
-            Especialidade especialidadeBuscar = ctx.Especialidades.FirstOrDefault(x => x.Especialidade1 == especialidadeAtualizado.Especialidade1);
+            Especialidade especialidadeBuscar = ctx.Especialidades.FirstOrDefault(x => x.nomeEspecialidade == especialidadeAtualizado.nomeEspecialidade);
 
-            if (especialidadeAtualizado.Especialidade1 != null && especialidadeBuscar == null)
+            if (especialidadeAtualizado.nomeEspecialidade != null && especialidadeBuscar == null)
             {
-                especialidadeBuscada.Especialidade1 = especialidadeAtualizado.Especialidade1;
+                especialidadeBuscada.nomeEspecialidade = especialidadeAtualizado.nomeEspecialidade;
 
                 ctx.Especialidades.Update(especialidadeBuscada);
 
@@ -39,7 +39,7 @@ namespace senai.spmg.webAPI.Repositories
 
         public Especialidade BuscarPorEspecialidade(string especialidade)
         {
-            Especialidade especialidadeBuscada = ctx.Especialidades.FirstOrDefault(x => x.Especialidade1 == especialidade);
+            Especialidade especialidadeBuscada = ctx.Especialidades.FirstOrDefault(x => x.nomeEspecialidade == especialidade);
 
             if (especialidadeBuscada != null)
             {

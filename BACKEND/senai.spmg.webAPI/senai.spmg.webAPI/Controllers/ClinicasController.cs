@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
@@ -64,6 +65,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Clinica novaClinica)
         {
@@ -100,6 +102,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Clinica clinicaAtualizada)
         {
@@ -142,6 +145,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, ClinicaViewModel clinicaAtualizada)
         {
@@ -183,6 +187,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

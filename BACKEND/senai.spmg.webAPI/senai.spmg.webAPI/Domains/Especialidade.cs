@@ -18,7 +18,7 @@ namespace senai.spmg.webAPI.Domains
         [StringLength(maximumLength: 200, MinimumLength = 1, ErrorMessage = "A especialidade inserida é muito grande!")]
         [RegularExpression("^[a-zA-Z ç ~ ã õ ê â î ô ñ û ú í á é ó ü ï ä ö ë]+$", ErrorMessage = "O especialidade deve conter apenas letras!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Campo 'especialidade' obrigatório!")]
-        public string Especialidade1 { get; set; }
+        public string nomeEspecialidade { get; set; }
 
         public virtual ICollection<Medico> Medicos { get; set; }
     }

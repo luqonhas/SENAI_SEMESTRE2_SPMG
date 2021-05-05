@@ -23,7 +23,7 @@ namespace senai.spmg.webAPI.Contexts
         public virtual DbSet<Especialidade> Especialidades { get; set; }
         public virtual DbSet<Medico> Medicos { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
-        public virtual DbSet<Situaco> Situacoes { get; set; }
+        public virtual DbSet<Situacoes> Situacoes { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuarios { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
 
@@ -129,12 +129,12 @@ namespace senai.spmg.webAPI.Contexts
                 entity.HasKey(e => e.IdEspecialidade)
                     .HasName("PK__Especial__409698054D04330A");
 
-                entity.HasIndex(e => e.Especialidade1, "UQ__Especial__F2F5ADC0416D770D")
+                entity.HasIndex(e => e.nomeEspecialidade, "UQ__Especial__F2F5ADC0416D770D")
                     .IsUnique();
 
                 entity.Property(e => e.IdEspecialidade).HasColumnName("idEspecialidade");
 
-                entity.Property(e => e.Especialidade1)
+                entity.Property(e => e.nomeEspecialidade)
                     .IsRequired()
                     .HasMaxLength(200)
                     .IsUnicode(false)
@@ -247,7 +247,7 @@ namespace senai.spmg.webAPI.Contexts
                     .HasConstraintName("FK__Pacientes__idUsu__34C8D9D1");
             });
 
-            modelBuilder.Entity<Situaco>(entity =>
+            modelBuilder.Entity<Situacoes>(entity =>
             {
                 entity.HasKey(e => e.IdSituacao)
                     .HasName("PK__Situacoe__12AFD197CE64D4AD");

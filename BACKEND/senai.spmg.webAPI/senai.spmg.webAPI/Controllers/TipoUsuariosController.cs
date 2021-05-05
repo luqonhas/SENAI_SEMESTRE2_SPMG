@@ -14,13 +14,13 @@ namespace senai.spmg.webAPI.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class EspecialidadesController : ControllerBase
+    public class TipoUsuariosController : ControllerBase
     {
-        private IEspecialidadeRepository _especialidadeRepository;
+        private ITipoUsuarioRepository _tipoRepository;
 
-        public EspecialidadesController()
+        public TipoUsuariosController()
         {
-            _especialidadeRepository = new EspecialidadeRepository();
+            _tipoRepository = new TipoUsuarioRepository();
         }
 
         private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
@@ -35,7 +35,7 @@ namespace senai.spmg.webAPI.Controllers
         {
             try
             {
-                return Ok(_especialidadeRepository.Listar());
+                return Ok(_tipoRepository.Listar());
             }
             catch (Exception codErro)
             {
@@ -48,14 +48,14 @@ namespace senai.spmg.webAPI.Controllers
         {
             try
             {
-                Especialidade especialidadeBuscada = _especialidadeRepository.BuscarPorId(id);
+                TipoUsuario tipoBuscado = _tipoRepository.BuscarPorId(id);
 
-                if (especialidadeBuscada == null)
+                if (tipoBuscado == null)
                 {
-                    return NotFound("Nenhuma especialidade encontrada!");
+                    return NotFound("Nenhuma permissão encontrada!");
                 }
 
-                return Ok(especialidadeBuscada);
+                return Ok(tipoBuscado);
             }
             catch (Exception codErro)
             {
@@ -64,19 +64,19 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Especialidade novaEspecialidade)
+        public IActionResult Post(TipoUsuario novoTipo)
         {
             try
             {
-                Especialidade especialidade = _especialidadeRepository.BuscarPorEspecialidade(novaEspecialidade.nomeEspecialidade);
+                TipoUsuario permissao = _tipoRepository.BuscarPorPermissao(novoTipo.Permissao);
 
-                if (especialidade == null)
+                if (permissao == null)
                 {
-                    _especialidadeRepository.Cadastrar(novaEspecialidade);
+                    _tipoRepository.Cadastrar(novoTipo);
 
-                    return Result(HttpStatusCode.Created, $"Especialidade '{novaEspecialidade.nomeEspecialidade}' cadastrada com sucesso!");
+                    return Result(HttpStatusCode.Created, $"Permissão '{novoTipo.Permissao}' cadastrada com sucesso!");
                 }
-                return BadRequest("Não foi possível cadastrar, especialidade já existente!");
+                return BadRequest("Não foi possível cadastrar, permissão já existente!");
             }
             catch (Exception codErro)
             {
@@ -85,25 +85,25 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Especialidade especialidadeAtualizada)
+        public IActionResult Put(int id, TipoUsuario tipoAtualizado)
         {
             try
             {
-                Especialidade especialidadeBuscada = _especialidadeRepository.BuscarPorId(id);
+                TipoUsuario tipoBuscado = _tipoRepository.BuscarPorId(id);
 
-                if (especialidadeAtualizada != null)
+                if (tipoAtualizado != null)
                 {
-                    Especialidade especialidade = _especialidadeRepository.BuscarPorEspecialidade(especialidadeAtualizada.nomeEspecialidade);
+                    TipoUsuario permissao = _tipoRepository.BuscarPorPermissao(tipoAtualizado.Permissao);
 
-                    if (especialidade == null)
+                    if (permissao == null)
                     {
-                        _especialidadeRepository.Atualizar(id, especialidadeAtualizada);
+                        _tipoRepository.Atualizar(id, tipoAtualizado);
 
                         return StatusCode(204);
                     }
-                    return BadRequest("Não foi possível cadastrar, especialidade já existente!");
+                    return BadRequest("Não foi possível cadastrar, permissão já existente!");
                 }
-                return NotFound("Especialidade não encontrada!");
+                return NotFound("Permissão não encontrada!");
             }
             catch (Exception codErro)
             {
@@ -116,23 +116,22 @@ namespace senai.spmg.webAPI.Controllers
         {
             try
             {
-                Especialidade especialidadeBuscada = _especialidadeRepository.BuscarPorId(id);
+                TipoUsuario tipoBuscado = _tipoRepository.BuscarPorId(id);
 
-                if (especialidadeBuscada != null)
+                if (tipoBuscado != null)
                 {
-                    _especialidadeRepository.Deletar(id);
+                    _tipoRepository.Deletar(id);
 
                     return StatusCode(204);
                 }
 
-                return NotFound("Especialidade não encontrada!");
+                return NotFound("Permissão não encontrada!");
             }
             catch (Exception codErro)
             {
                 return BadRequest(codErro);
             }
         }
-
 
     }
 }
