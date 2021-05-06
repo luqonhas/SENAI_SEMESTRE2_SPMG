@@ -55,6 +55,7 @@ namespace senai.spmg.webAPI.Repositories
 
         public void Cadastrar(Consulta novaConsulta)
         {
+            
             ctx.Consultas.Add(novaConsulta);
 
             ctx.SaveChanges();

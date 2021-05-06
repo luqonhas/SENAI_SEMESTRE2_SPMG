@@ -772,7 +772,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBhZG0uY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNjIwMTgxODUwLCJpc3MiOiJzcG1nLndlYkFQSSIsImF1ZCI6InNwbWcud2ViQVBJIn0.Byn2tBDPCJ7AyNh_RmD1GjK8585mjcBc1h1N1T3Cjv0",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBhZG0uY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNjIwMjM5NjI1LCJpc3MiOiJzcG1nLndlYkFQSSIsImF1ZCI6InNwbWcud2ViQVBJIn0.bQwF8f6nsCOGwtLUhKKsZfWjrBauz1VIy0q8x2hzsYg",
 									"type": "string"
 								}
 							]
@@ -789,7 +789,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/consultas/agendamentos/situacao/7",
+							"raw": "http://localhost:5000/api/consultas/agendamentos/situacao/11",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -800,7 +800,7 @@
 								"consultas",
 								"agendamentos",
 								"situacao",
-								"7"
+								"11"
 							]
 						}
 					},
@@ -901,11 +901,21 @@
 				{
 					"name": "Paciente.Cadastrar",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBhZG0uY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNjIwMjUxODk1LCJpc3MiOiJzcG1nLndlYkFQSSIsImF1ZCI6InNwbWcud2ViQVBJIn0.cdHAYNt42RYU2e7-oDg-_mrDOeNo0UDkLS0qnTFX6Oo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nomePaciente\": \"Luqonhastres\",\r\n    \"rg\": \"125353789\",\r\n    \"cpf\": \"12215678933\",\r\n    \"dataNascimento\": \"01/10/2003\",\r\n    \"telefonePaciente\": \"11914344678\",\r\n    \"endereco\": \"Rua Blablubleble, 12 - SP\"\r\n}",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nomePaciente\": \"Luqonhastres\",\r\n    \"rg\": \"125353789\",\r\n    \"cpf\": \"12215678933\",\r\n    \"dataNascimento\": \"05/05/2021\",\r\n    \"telefonePaciente\": \"11914344678\",\r\n    \"endereco\": \"Rua Blablubleble, 12 - SP\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -930,11 +940,21 @@
 				{
 					"name": "Paciente.Atualizar",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbUBhZG0uY29tIiwianRpIjoiMTEiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJBZG1pbmlzdHJhZG9yIiwiZXhwIjoxNjIwMjUxODk1LCJpc3MiOiJzcG1nLndlYkFQSSIsImF1ZCI6InNwbWcud2ViQVBJIn0.cdHAYNt42RYU2e7-oDg-_mrDOeNo0UDkLS0qnTFX6Oo",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nomePaciente\": \"Luqonhasquatro\",\r\n    \"rg\": \"125353789\",\r\n    \"cpf\": \"12215678933\",\r\n    \"dataNascimento\": \"01/10/2003\",\r\n    \"telefonePaciente\": \"11914344678\",\r\n    \"endereco\": \"Rua Blablubleble, 12 - SP\"\r\n}",
+							"raw": "{\r\n    \"idUsuario\": 1,\r\n    \"nomePaciente\": \"Luqonhasquatro\",\r\n    \"rg\": \"125353789\",\r\n    \"cpf\": \"12215678933\",\r\n    \"dataNascimento\": \"05/05/2077\",\r\n    \"telefonePaciente\": \"11914344678\",\r\n    \"endereco\": \"Rua Blablubleble, 12 - SP\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -942,7 +962,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:5000/api/pacientes/15",
+							"raw": "http://localhost:5000/api/pacientes/17",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -951,7 +971,7 @@
 							"path": [
 								"api",
 								"pacientes",
-								"15"
+								"17"
 							]
 						}
 					},
@@ -963,7 +983,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:5000/api/pacientes/8",
+							"raw": "http://localhost:5000/api/pacientes/16",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -972,7 +992,7 @@
 							"path": [
 								"api",
 								"pacientes",
-								"8"
+								"16"
 							]
 						}
 					},
@@ -1187,8 +1207,8 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [],
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"adm@adm.com\",\r\n    \"senha\": \"adm123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1205,6 +1225,41 @@
 							"path": [
 								"api",
 								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "uploads",
+			"item": [
+				{
+					"name": "UploadFile",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/C:/Users/User/Documents/Lucas/8.ARTE/capa de revista ana julia piá 2.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/fileuploads",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"fileuploads"
 							]
 						}
 					},

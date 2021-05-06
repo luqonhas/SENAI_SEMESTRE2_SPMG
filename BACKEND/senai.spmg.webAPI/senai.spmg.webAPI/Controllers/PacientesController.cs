@@ -90,6 +90,11 @@ namespace senai.spmg.webAPI.Controllers
 
                 Paciente pacienteRG = _pacienteRepository.BuscarPorRG(novoPaciente.Rg);
 
+                if (novoPaciente.DataNascimento.Year >= DateTime.Now.Year)
+                {
+                    return BadRequest("Insira uma data de nascimento válida");
+                }
+
                 if (pacienteCPF == null)
                 {
                     if (pacienteRG == null)

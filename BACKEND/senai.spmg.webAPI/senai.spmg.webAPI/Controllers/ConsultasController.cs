@@ -103,6 +103,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        /*
         [Authorize(Roles = "Administrador")]
         [HttpPatch("agendamentos/situacao/{id}")]
         public IActionResult PatchSit(int id, ConsultaViewModel situacaoAtualizada)
@@ -160,6 +161,7 @@ namespace senai.spmg.webAPI.Controllers
                 return BadRequest(codErro);
             }
         }
+        */
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, Consulta consultaAtualizada)
@@ -189,6 +191,33 @@ namespace senai.spmg.webAPI.Controllers
                     consultaBuscada = new Consulta
                     {
                         Descricao = descricaoAtualizado.descricao
+                    };
+
+                    _consultaRepository.Atualizar(id, consultaBuscada);
+
+                    return StatusCode(204);
+                }
+                return BadRequest("Nenhuma consulta encontrada!");
+            }
+            catch (Exception codErro)
+            {
+                return BadRequest(codErro);
+            }
+        }
+
+        [Authorize(Roles = "Administrador")]
+        [HttpPatch("{id}")]
+        public IActionResult PatchSit(int id, ConsultaViewModel situacaoAtualizado)
+        {
+            try
+            {
+                Consulta consultaBuscada = _consultaRepository.BuscarPorId(id);
+
+                if (consultaBuscada != null)
+                {
+                    consultaBuscada = new Consulta
+                    {
+                        IdSituacao = situacaoAtualizado.idSituacao
                     };
 
                     _consultaRepository.Atualizar(id, consultaBuscada);

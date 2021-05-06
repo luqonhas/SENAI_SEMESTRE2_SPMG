@@ -45,8 +45,10 @@ namespace senai.spmg.webAPI.Repositories
             {
                 pacienteBuscado.TelefonePaciente = pacienteAtualizado.TelefonePaciente;
             }
-
-            pacienteBuscado.DataNascimento = pacienteAtualizado.DataNascimento;
+            if (pacienteAtualizado.DataNascimento !> DateTime.Now)
+            {
+                pacienteBuscado.DataNascimento = pacienteAtualizado.DataNascimento;
+            }
 
             ctx.Pacientes.Update(pacienteBuscado);
 
