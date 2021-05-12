@@ -21,6 +21,7 @@ namespace senai.spmg.webAPI.Controllers
             _situacaoRepository = new SituacaoRepository();
         }
 
+        // MVP - Método para listar
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,6 +35,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // Método para listar por ID
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

@@ -26,6 +26,7 @@ namespace senai.spmg.webAPI.Controllers
             _loginRepository = new UsuarioRepository();
         }
 
+        // MVP - Método para logar e gerar o token
         [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {

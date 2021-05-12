@@ -13,6 +13,7 @@ namespace senai.spmg.webAPI.Repositories
     {
         SPMGContext ctx = new SPMGContext();
 
+        // MVP - Método de atualizar informações dos médicos com validações
         public void Atualizar(int id, Medico medicoAtualizado)
         {
             Medico medicoBuscado = BuscarPorId(id);
@@ -23,19 +24,23 @@ namespace senai.spmg.webAPI.Repositories
             {
                 medicoBuscado.Crm = medicoAtualizado.Crm;
             }
+
             if (medicoAtualizado.NomeMedico != null)
             {
                 medicoBuscado.NomeMedico = medicoAtualizado.NomeMedico;
             }
-            if (medicoAtualizado.IdUsuario != null)
+
+            if (medicoAtualizado.IdUsuario != null && ctx.Usuarios.Find(medicoAtualizado.IdUsuario) != null)
             {
                 medicoBuscado.IdUsuario = medicoAtualizado.IdUsuario;
             }
-            if (medicoAtualizado.IdEspecialidade != null)
+
+            if (medicoAtualizado.IdEspecialidade != null && ctx.Especialidades.Find(medicoAtualizado.IdEspecialidade) != null)
             {
                 medicoBuscado.IdEspecialidade = medicoAtualizado.IdEspecialidade;
             }
-            if (medicoAtualizado.IdClinica != null)
+
+            if (medicoAtualizado.IdClinica != null && ctx.Clinicas.Find(medicoAtualizado.IdClinica) != null)
             {
                 medicoBuscado.IdClinica = medicoAtualizado.IdClinica;
             }
@@ -45,11 +50,13 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de buscar médicos por ID
         public Medico BuscarPorId(int id)
         {
             return ctx.Medicos.Include(x => x.Consulta).FirstOrDefault(x => x.IdMedico == id);
         }
 
+        // MVP - Método de buscar CRM dos médicos para complementar outros métodos
         public Medico BuscarPorCRM(string crm)
         {
             Medico medicoBuscado = ctx.Medicos.FirstOrDefault(x => x.Crm == crm);
@@ -62,6 +69,7 @@ namespace senai.spmg.webAPI.Repositories
             return null;
         }
 
+        // MVP - Método de cadastrar novos médicos
         public void Cadastrar(Medico novoMedico)
         {
             ctx.Medicos.Add(novoMedico);
@@ -69,6 +77,7 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de deletar médicos
         public void Deletar(int id)
         {
             ctx.Medicos.Remove(BuscarPorId(id));
@@ -76,11 +85,15 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de listar todos os médicos
         public List<Medico> Listar()
         {
             return ctx.Medicos.Include(x => x.Consulta).ToList();
         }
 
+        // MVP - Método de listar todos os médicos com suas consultas
+        // MÉTODO NÃO NECESSÁRIO!
+        /*
         public List<Medico> ListarConsultas(int id)
         {
             return ctx.Medicos
@@ -88,6 +101,6 @@ namespace senai.spmg.webAPI.Repositories
                 .Where(x => x.IdUsuario == id)
                 .ToList();
         }
-
+        */
     }
 }

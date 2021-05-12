@@ -25,13 +25,18 @@ namespace senai.spmg.webAPI.Controllers
             _clinicaRepository = new ClinicaRepository();
         }
 
+        // Método que faz retornar mensagems personalizadas em alguns tipos de StatusCode que normalmente não aceitam mensagens personalizadas
+        // MÉTODO NÃO NECESSÁRIO!
+        /*
         private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
         {
             StatusCode = (int)statusCode,
             Content = $"Status Code: {(int)statusCode}; {statusCode}; {reason}",
             ContentType = "text/plain",
         };
+        */
 
+        // MVP - Método para listar
         [HttpGet]
         public IActionResult Get()
         {
@@ -45,6 +50,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para listar por ID
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -65,6 +71,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Clinica novaClinica)
@@ -87,7 +94,7 @@ namespace senai.spmg.webAPI.Controllers
                             {
                                 _clinicaRepository.Cadastrar(novaClinica);
 
-                                return Result(HttpStatusCode.Created, $"Clínica '{novaClinica.NomeFantasia}' cadastrada com sucesso!");
+                                return Created(HttpStatusCode.Created.ToString(), $"Clínica '{novaClinica.NomeFantasia}' cadastrada com sucesso!");
                             }      
                         }
                         return BadRequest("Não foi possível cadastrar, razão social já existente!");
@@ -102,6 +109,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar todas as informações
         [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Clinica clinicaAtualizada)
@@ -145,6 +153,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar um parte das informações
         [Authorize(Roles = "Administrador")]
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, ClinicaViewModel clinicaAtualizada)
@@ -167,7 +176,12 @@ namespace senai.spmg.webAPI.Controllers
                             {
                                 clinicaBuscada = new Clinica
                                 {
-                                    NomeFantasia = clinicaAtualizada.NomeFantasia
+                                    NomeFantasia = clinicaAtualizada.NomeFantasia,
+                                    HorarioAbertura = clinicaAtualizada.HorarioAbertura,
+                                    HorarioFechamento = clinicaAtualizada.HorarioFechamento,
+                                    Cnpj = clinicaAtualizada.Cnpj,
+                                    RazaoSocial = clinicaAtualizada.RazaoSocial,
+                                    Endereco = clinicaAtualizada.Endereco
                                 };
 
                                 _clinicaRepository.Atualizar(id, clinicaBuscada);
@@ -187,6 +201,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

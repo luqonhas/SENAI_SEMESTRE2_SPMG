@@ -26,13 +26,7 @@ namespace senai.spmg.webAPI.Controllers
             _medicoRepository = new MedicoRepository();
         }
 
-        private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
-        {
-            StatusCode = (int)statusCode,
-            Content = $"Status Code: {(int)statusCode}; {statusCode}; {reason}",
-            ContentType = "text/plain",
-        };
-
+        // MVP - Método para listar
         [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
@@ -47,22 +41,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Médico")]
-        [HttpGet("consultas")]
-        public IActionResult GetConsult()
-        {
-            try
-            {
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                return Ok(_medicoRepository.ListarConsultas(idUsuario));
-            }
-            catch (Exception codErro)
-            {
-                return BadRequest(codErro);
-            }
-        }
-
+        // MVP - Método para listar por ID
         [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -84,6 +63,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Medico novoMedico)
@@ -96,7 +76,7 @@ namespace senai.spmg.webAPI.Controllers
                 {
                     _medicoRepository.Cadastrar(novoMedico);
 
-                    return Result(HttpStatusCode.Created, $"Médico '{novoMedico.NomeMedico}' cadastrado com sucesso!");
+                    return Created(HttpStatusCode.Created.ToString(), $"Médico '{novoMedico.NomeMedico}' cadastrado com sucesso!");
                 }
                 return BadRequest("Não foi possível cadastrar, CRM já existente!");
             }
@@ -106,6 +86,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar todas as informações
         [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Medico medicoAtualizado)
@@ -134,6 +115,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

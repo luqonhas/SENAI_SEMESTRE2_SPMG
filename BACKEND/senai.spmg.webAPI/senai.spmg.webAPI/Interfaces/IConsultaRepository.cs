@@ -19,5 +19,11 @@ namespace senai.spmg.webAPI.Interfaces
         void Deletar(int id);
 
         Consulta BuscarPorSituacao(int id);
+
+        void AtualizarSituacao(int idConsulta, int idSituacao);
+
+        void InserirDescricao(int id, Consulta descricao, int idUsuario);
+
+        List<Consulta> ListarMinhasConsultas(int id);
     }
 }

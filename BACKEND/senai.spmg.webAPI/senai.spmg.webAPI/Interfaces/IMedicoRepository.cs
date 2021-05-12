@@ -20,6 +20,7 @@ namespace senai.spmg.webAPI.Interfaces
 
         void Deletar(int id);
 
-        List<Medico> ListarConsultas(int id);
+        // MÉTODO NÃO NECESSÁRIO!
+        // List<Medico> ListarConsultas(int id);
     }
 }

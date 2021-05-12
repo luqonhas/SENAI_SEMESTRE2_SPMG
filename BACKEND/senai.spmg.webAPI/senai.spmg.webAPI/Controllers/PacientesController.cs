@@ -25,13 +25,7 @@ namespace senai.spmg.webAPI.Controllers
             _pacienteRepository = new PacienteRepository();
         }
 
-        private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
-        {
-            StatusCode = (int)statusCode,
-            Content = $"Status Code: {(int)statusCode}; {statusCode}; {reason}",
-            ContentType = "text/plain",
-        };
-
+        // MVP - Método para listar
         [HttpGet]
         public IActionResult Get()
         {
@@ -45,22 +39,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
-        [Authorize(Roles = "Paciente")]
-        [HttpGet("consultas")]
-        public IActionResult GetConsult()
-        {
-            try
-            {
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                return Ok(_pacienteRepository.ListarConsultas(idUsuario));
-            }
-            catch (Exception codErro)
-            {
-                return BadRequest(codErro);
-            }
-        }
-
+        // MVP - Método para listar por ID
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -81,6 +60,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [HttpPost]
         public IActionResult Post(Paciente novoPaciente)
         {
@@ -103,7 +83,7 @@ namespace senai.spmg.webAPI.Controllers
                         {
                             _pacienteRepository.Cadastrar(novoPaciente);
 
-                            return Result(HttpStatusCode.Created, $"Paciente '{novoPaciente.NomePaciente}' cadastrado com sucesso!");
+                            return Created(HttpStatusCode.Created.ToString(), novoPaciente);
                         }
                     }
                     return BadRequest("Não foi possível cadastrar, RG já existente!");
@@ -116,6 +96,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar todas as informações
         [HttpPut("{id}")]
         public IActionResult Put(int id, Paciente pacienteAtualizado)
         {
@@ -152,6 +133,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

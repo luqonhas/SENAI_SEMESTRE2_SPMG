@@ -25,6 +25,7 @@ namespace senai.spmg.webAPI.Controllers
             _consultaRepository = new ConsultaRepository();
         }
 
+        // MVP - Método para listar
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,6 +39,23 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize(Roles = "Médico, Paciente")]
+        [HttpGet("minhas")]
+        public IActionResult GetMyConsults()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                return Ok(_consultaRepository.ListarMinhasConsultas(idUsuario));
+            }
+            catch (Exception codErro)
+            {
+                return BadRequest(codErro);
+            }
+        }
+
+        // MVP - Método para listar por ID
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -58,6 +76,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [HttpPost]
         public IActionResult Post(Consulta novaConsulta)
         {
@@ -73,6 +92,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // EXTRA - Método para cadastrar um parte das informações
         [HttpPost("agendar")]
         public IActionResult PostConsult(ConsultaViewModel novaConsulta)
         {
@@ -103,66 +123,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
-        /*
-        [Authorize(Roles = "Administrador")]
-        [HttpPatch("agendamentos/situacao/{id}")]
-        public IActionResult PatchSit(int id, ConsultaViewModel situacaoAtualizada)
-        {
-            try
-            {
-                Consulta consultaBuscada = _consultaRepository.BuscarPorId(id);
-
-                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
-
-                if (consultaBuscada != null)
-                {
-                    if (situacaoAtualizada.idSituacao != 1 || situacaoAtualizada.idSituacao != 2 || situacaoAtualizada.idSituacao != 3)
-                    {
-                        if (situacaoAtualizada.idSituacao == 2 || situacaoAtualizada.idSituacao == 3)
-                        {
-                            if (situacaoAtualizada.idSituacao == 2 || situacaoAtualizada.idSituacao == 3)
-                            {
-                                if (situacaoAtualizada.idSituacao == 1 && idUsuario != 1 || idUsuario != 2 || situacaoAtualizada.idSituacao == 3 && idUsuario != 1 || idUsuario != 2)
-                                {
-                                    return NotFound("Somente usuários com a permissão de 'Administrador' ou 'Médico' podem marcar uma consulta como realizada ou agendada!");
-                                }
-
-                                consultaBuscada = new Consulta
-                                {
-                                    IdSituacao = situacaoAtualizada.idSituacao
-                                };
-
-                                _consultaRepository.Atualizar(id, consultaBuscada);
-
-                                return StatusCode(204);
-                            }
-
-                            if (situacaoAtualizada.idSituacao == 2 && idUsuario != 1)
-                            {
-                                return NotFound("Somente usuários com a permissão de 'Administrador' podem marcar uma consulta como cancelada!");
-                            }
-
-                            consultaBuscada = new Consulta
-                            {
-                                IdSituacao = situacaoAtualizada.idSituacao
-                            };
-
-                            _consultaRepository.Atualizar(id, consultaBuscada);
-
-                            return StatusCode(204);
-                        }
-                    }
-                    return BadRequest("Situação inserida não existente!");
-                }
-                return BadRequest("Nenhuma consulta encontrada!");
-            }
-            catch (Exception codErro)
-            {
-                return BadRequest(codErro);
-            }
-        }
-        */
-
+        // MVP - Método para atualizar todas as informações
         [HttpPut("{id}")]
         public IActionResult Put(int id, Consulta consultaAtualizada)
         {
@@ -178,12 +139,15 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar uma parte das informações (descrição)
         [Authorize(Roles = "Médico")]
         [HttpPatch("{id}")]
         public IActionResult PatchDesc(int id, ConsultaViewModel descricaoAtualizado)
         {
             try
             {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
                 Consulta consultaBuscada = _consultaRepository.BuscarPorId(id);
 
                 if (consultaBuscada != null)
@@ -193,7 +157,7 @@ namespace senai.spmg.webAPI.Controllers
                         Descricao = descricaoAtualizado.descricao
                     };
 
-                    _consultaRepository.Atualizar(id, consultaBuscada);
+                    _consultaRepository.InserirDescricao(id, consultaBuscada, idUsuario);
 
                     return StatusCode(204);
                 }
@@ -205,9 +169,10 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar parte das informações (situação)
         [Authorize(Roles = "Administrador")]
         [HttpPatch("{id}")]
-        public IActionResult PatchSit(int id, ConsultaViewModel situacaoAtualizado)
+        public IActionResult PatchSit(int id, SituacaoViewModel status)
         {
             try
             {
@@ -215,12 +180,7 @@ namespace senai.spmg.webAPI.Controllers
 
                 if (consultaBuscada != null)
                 {
-                    consultaBuscada = new Consulta
-                    {
-                        IdSituacao = situacaoAtualizado.idSituacao
-                    };
-
-                    _consultaRepository.Atualizar(id, consultaBuscada);
+                    _consultaRepository.AtualizarSituacao(id, status.IdSituacao);
 
                     return StatusCode(204);
                 }
@@ -232,6 +192,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

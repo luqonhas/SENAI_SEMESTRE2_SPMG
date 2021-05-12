@@ -13,6 +13,7 @@ namespace senai.spmg.webAPI.Repositories
     {
         SPMGContext ctx = new SPMGContext();
 
+        // MVP - Método de atualizar informações dos usuários com validações
         public void Atualizar(int id, Usuario usuarioAtualizado)
         {
             Usuario usuarioBuscado = BuscarPorId(id);
@@ -23,10 +24,12 @@ namespace senai.spmg.webAPI.Repositories
             {
                 usuarioBuscado.Email = usuarioAtualizado.Email;
             }
+
             if (usuarioAtualizado.Senha != null)
             {
                 usuarioBuscado.Senha = usuarioAtualizado.Senha;
             }
+
             if (usuarioAtualizado.IdTipoUsuario != null)
             {
                 usuarioBuscado.IdTipoUsuario = usuarioAtualizado.IdTipoUsuario;
@@ -37,6 +40,13 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de buscar usuários por ID
+        public Usuario BuscarPorId(int id)
+        {
+            return ctx.Usuarios.Include(x => x.Pacientes).Include(x => x.Medicos).FirstOrDefault(x => x.IdUsuario == id);
+        }
+
+        // MVP - Método de buscar por email dos usuários para complementar outros métodos
         public Usuario BuscarPorEmail(string email)
         {
             Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(x => x.Email == email);
@@ -49,11 +59,7 @@ namespace senai.spmg.webAPI.Repositories
             return null;
         }
 
-        public Usuario BuscarPorId(int id)
-        {
-            return ctx.Usuarios.Include(x => x.Pacientes).Include(x => x.Medicos).FirstOrDefault(x => x.IdUsuario == id);
-        }
-
+        // MVP - Método de cadastrar novos usuários
         public void Cadastrar(Usuario novoUsuario)
         {
             ctx.Usuarios.Add(novoUsuario);
@@ -61,6 +67,7 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de deletar usuários
         public void Deletar(int id)
         {
             ctx.Usuarios.Remove(BuscarPorId(id));
@@ -68,11 +75,21 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de listar todos os usuários
         public List<Usuario> Listar()
         {
             return ctx.Usuarios.Include(x => x.Pacientes).Include(x => x.Medicos).ToList();
         }
 
+        // MVP - Método de para criar um token de login para os usuários
+        public Usuario Logar(string email, string senha)
+        {
+            Usuario login = ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == email && x.Senha == senha);
+
+            return login;
+        }
+
+        // EXTRA - Método de listar apenas as informações do usuário que está logado
         public List<Usuario> ListarPerfil(int id)
         {
             return ctx.Usuarios
@@ -83,6 +100,7 @@ namespace senai.spmg.webAPI.Repositories
                 .ToList();
         }
 
+        // EXTRA - Método de listar todos os usuários sem que suas senhas apareçam
         public List<Usuario> ListarSemSenha()
         {
             var usuarioSemSenha = ctx.Usuarios
@@ -99,12 +117,6 @@ namespace senai.spmg.webAPI.Repositories
             return usuarioSemSenha.ToList();
         }
 
-        public Usuario Logar(string email, string senha)
-        {
-            Usuario login = ctx.Usuarios.Include(x => x.IdTipoUsuarioNavigation).FirstOrDefault(x => x.Email == email && x.Senha == senha);
-
-            return login;
-        }
 
     }
 }

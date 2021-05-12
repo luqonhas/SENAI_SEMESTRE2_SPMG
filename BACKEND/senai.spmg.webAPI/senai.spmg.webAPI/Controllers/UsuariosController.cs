@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace senai.spmg.webAPI.Controllers
@@ -26,13 +28,7 @@ namespace senai.spmg.webAPI.Controllers
             _usuarioRepository = new UsuarioRepository();
         }
 
-        private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
-        {
-            StatusCode = (int)statusCode,
-            Content = $"Status Code: {(int)statusCode}; {statusCode}; {reason}",
-            ContentType = "text/plain",
-        };
-
+        // MVP - Método para listar
         [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
@@ -47,6 +43,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // EXTRA - Método para listar informações do usuário logado
         [Authorize]
         [HttpGet("perfil")]
         public IActionResult GetProfile()
@@ -63,6 +60,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para listar por ID
         [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
@@ -84,6 +82,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Usuario novoUsuario)
@@ -98,7 +97,7 @@ namespace senai.spmg.webAPI.Controllers
                     {
                         _usuarioRepository.Cadastrar(novoUsuario);
 
-                        return Result(HttpStatusCode.Created, $"Usuário com o email '{novoUsuario.Email}' cadastrado com sucesso!");
+                        return Created(HttpStatusCode.Created.ToString(), $"Usuário com o email '{novoUsuario.Email}' cadastrado com sucesso!");
                     }
                 }
                 return BadRequest("Não foi possível cadastrar, e-mail já existente!");
@@ -109,6 +108,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar parte das informações
         [Authorize(Roles = "Administrador")]
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, LoginViewModel usuarioAtualizado)
@@ -142,6 +142,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
@@ -164,6 +165,7 @@ namespace senai.spmg.webAPI.Controllers
                 return BadRequest(codErro);
             }
         }
+
 
     }
 }

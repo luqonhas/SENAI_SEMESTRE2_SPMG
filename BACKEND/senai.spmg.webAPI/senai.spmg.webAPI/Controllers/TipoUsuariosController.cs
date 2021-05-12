@@ -23,13 +23,7 @@ namespace senai.spmg.webAPI.Controllers
             _tipoRepository = new TipoUsuarioRepository();
         }
 
-        private static ActionResult Result(HttpStatusCode statusCode, string reason) => new ContentResult
-        {
-            StatusCode = (int)statusCode,
-            Content = $"Status Code: {(int)statusCode}; {statusCode}; {reason}",
-            ContentType = "text/plain",
-        };
-
+        // MVP - Método para listar
         [HttpGet]
         public IActionResult Get()
         {
@@ -43,6 +37,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para listar por ID
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -63,6 +58,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para cadastrar
         [HttpPost]
         public IActionResult Post(TipoUsuario novoTipo)
         {
@@ -74,7 +70,7 @@ namespace senai.spmg.webAPI.Controllers
                 {
                     _tipoRepository.Cadastrar(novoTipo);
 
-                    return Result(HttpStatusCode.Created, $"Permissão '{novoTipo.Permissao}' cadastrada com sucesso!");
+                    return Created(HttpStatusCode.Created.ToString(), $"Permissão '{novoTipo.Permissao}' cadastrada com sucesso!");
                 }
                 return BadRequest("Não foi possível cadastrar, permissão já existente!");
             }
@@ -84,6 +80,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para atualizar todas as informações
         [HttpPut("{id}")]
         public IActionResult Put(int id, TipoUsuario tipoAtualizado)
         {
@@ -111,6 +108,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        // MVP - Método para deletar
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -132,6 +130,7 @@ namespace senai.spmg.webAPI.Controllers
                 return BadRequest(codErro);
             }
         }
+
 
     }
 }

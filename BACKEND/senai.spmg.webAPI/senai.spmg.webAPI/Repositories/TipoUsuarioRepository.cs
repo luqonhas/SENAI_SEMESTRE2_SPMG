@@ -13,6 +13,7 @@ namespace senai.spmg.webAPI.Repositories
     {
         SPMGContext ctx = new SPMGContext();
 
+        // MVP - Método de atualizar informações dos tipos usuários com validações
         public bool Atualizar(int id, TipoUsuario tipoAtualizado)
         {
             TipoUsuario tipoBuscada = BuscarPorId(id);
@@ -32,11 +33,13 @@ namespace senai.spmg.webAPI.Repositories
             return false;
         }
 
+        // MVP - Método de buscar tipos de usuários por ID
         public TipoUsuario BuscarPorId(int id)
         {
             return ctx.TipoUsuarios.Include(x => x.Usuarios).FirstOrDefault(x => x.IdTipoUsuario == id);
         }
 
+        // MVP - Método de buscar por permissão dos tipos usuários para complementar outros métodos
         public TipoUsuario BuscarPorPermissao(string permissao)
         {
             TipoUsuario tipoBuscado = ctx.TipoUsuarios.FirstOrDefault(x => x.Permissao == permissao);
@@ -49,6 +52,7 @@ namespace senai.spmg.webAPI.Repositories
             return null;
         }
 
+        // MVP - Método de cadastrar novos tipos usuários
         public void Cadastrar(TipoUsuario novoTipo)
         {
             ctx.TipoUsuarios.Add(novoTipo);
@@ -56,6 +60,7 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de deletar tipos usuários
         public void Deletar(int id)
         {
             ctx.TipoUsuarios.Remove(BuscarPorId(id));
@@ -63,6 +68,7 @@ namespace senai.spmg.webAPI.Repositories
             ctx.SaveChanges();
         }
 
+        // MVP - Método de listar todos os tipos usuários
         public List<TipoUsuario> Listar()
         {
             return ctx.TipoUsuarios.Include(x => x.Usuarios).ToList();

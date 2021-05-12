@@ -37,6 +37,7 @@ namespace senai.spmg.webAPI.Controllers
             return "Not Uploaded!";
         } */
 
+        // EXTRA - Método que permite salvar imagens 
         [HttpPost]
         public string Upload([FromForm] FileUpload objectFile)
         {
