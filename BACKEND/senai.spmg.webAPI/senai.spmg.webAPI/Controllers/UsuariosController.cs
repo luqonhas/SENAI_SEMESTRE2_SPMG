@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
+using senai.spmg.webAPI.Models;
 using senai.spmg.webAPI.Repositories;
+using senai.spmg.webAPI.Services;
 using senai.spmg.webAPI.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -22,10 +24,12 @@ namespace senai.spmg.webAPI.Controllers
     public class UsuariosController : ControllerBase
     {
         private IUsuarioRepository _usuarioRepository;
+        private readonly IMailService _mailService;
 
-        public UsuariosController()
+        public UsuariosController(IMailService mailService)
         {
             _usuarioRepository = new UsuarioRepository();
+            _mailService = mailService;
         }
 
         // MVP - Método para listar
@@ -85,7 +89,7 @@ namespace senai.spmg.webAPI.Controllers
         // MVP - Método para cadastrar
         [Authorize(Roles = "Administrador")]
         [HttpPost]
-        public IActionResult Post(Usuario novoUsuario)
+        public IActionResult Post(Usuario novoUsuario, [FromForm]WelcomeRequest request, string emailUser)
         {
             try
             {
@@ -95,6 +99,10 @@ namespace senai.spmg.webAPI.Controllers
                 {
                     if (usuarioEmail == null)
                     {
+                        emailUser = novoUsuario.Email;
+
+                        _mailService.SendWelcomeEmailAsync(request, emailUser);
+
                         _usuarioRepository.Cadastrar(novoUsuario);
 
                         return Created(HttpStatusCode.Created.ToString(), $"Usuário com o email '{novoUsuario.Email}' cadastrado com sucesso!");

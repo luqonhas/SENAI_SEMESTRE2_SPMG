@@ -73,3 +73,6 @@ C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.we
 C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\bin\Debug\net5.0\senai.spmg.webAPI.xml
 C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\obj\Debug\net5.0\senai.spmg.webAPI.xml
 C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\bin\Debug\net5.0\MailKit.dll
+C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\bin\Debug\net5.0\MimeKit.dll
+C:\Users\User\Desktop\SENAI\ATVIDADES\SENAI_SEMESTER2_SPMG\BACKEND\senai.spmg.webAPI\senai.spmg.webAPI\bin\Debug\net5.0\BouncyCastle.Crypto.dll
