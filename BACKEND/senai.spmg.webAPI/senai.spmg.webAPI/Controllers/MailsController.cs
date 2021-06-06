@@ -20,6 +20,7 @@ namespace senai.spmg.webAPI.Controllers
             this.mailService = mailService;
         }
 
+        // EXTRA - Método para enviar emails
         [HttpPost("send")]
         public async Task<IActionResult> SendMail([FromForm] MailRequest request)
         {

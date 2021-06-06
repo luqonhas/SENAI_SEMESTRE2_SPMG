@@ -21,6 +21,7 @@ namespace senai.spmg.webAPI.Services
             _mailSettings = mailSettings.Value;
         }
 
+        // EXTRA - Método para enviar emails manualmente
         public async Task SendEmailAsync(MailRequest mailRequest)
         {
             // criação de um objeto de MimeMessage (MimeKit) e envia-lo usando o SMTPClient (MailKit)
@@ -66,6 +67,7 @@ namespace senai.spmg.webAPI.Services
 
         }
 
+        // EXTRA - Método para enviar emails de boas vindas automáticos
         public async Task SendWelcomeEmailAsync(WelcomeRequest request, string emailUser)
         {
             // colocamos o caminho do arquivo onde está o template do HTML de boas vindas

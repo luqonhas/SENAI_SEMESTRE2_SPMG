@@ -86,7 +86,7 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
-        // MVP - Método para cadastrar
+        // MVP & EXTRA - Método para cadastrar e retonar um email de boas vindas
         [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Usuario novoUsuario, [FromForm]WelcomeRequest request, string emailUser)
