@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
@@ -24,6 +25,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,6 +40,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -59,6 +62,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para cadastrar e retornar os dados cadastrados
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(Especialidade novaEspecialidade)
         {
@@ -81,6 +85,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar todas as informações
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Especialidade especialidadeAtualizada)
         {
@@ -109,6 +114,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

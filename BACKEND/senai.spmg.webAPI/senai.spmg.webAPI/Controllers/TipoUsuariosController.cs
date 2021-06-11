@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
@@ -24,6 +25,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,6 +40,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -59,6 +62,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para cadastrar
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public IActionResult Post(TipoUsuario novoTipo)
         {
@@ -81,6 +85,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar todas as informações
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, TipoUsuario tipoAtualizado)
         {
@@ -109,6 +114,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

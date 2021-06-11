@@ -157,12 +157,42 @@ namespace senai.spmg.webAPI.Repositories
 
             if (pacienteBuscado != null)
             {
-                return ctx.Consultas.Where(x => x.IdPaciente == pacienteBuscado.IdPaciente).ToList();
+                return ctx.Consultas.Where(x => x.IdPaciente == pacienteBuscado.IdPaciente)
+                    .Include(x => x.IdPacienteNavigation)
+                    .Include(x => x.IdMedicoNavigation)
+                    .Include(x => x.IdSituacaoNavigation)
+                    .Include(x => x.IdMedicoNavigation.IdEspecialidadeNavigation)
+                    .Select(x => new Consulta
+                    {
+                        IdConsulta = x.IdConsulta,
+                        IdMedicoNavigation = x.IdMedicoNavigation,
+                        IdPacienteNavigation = x.IdPacienteNavigation,
+                        IdSituacaoNavigation = x.IdSituacaoNavigation,
+                        Descricao = x.Descricao,
+                        DataConsulta = x.DataConsulta,
+                        HoraConsulta = x.HoraConsulta
+                    })
+                    .ToList();
             }
 
             if (medicoBuscado != null)
             {
-                return ctx.Consultas.Where(x => x.IdMedico == medicoBuscado.IdMedico).ToList();
+                return ctx.Consultas.Include(x => x.IdMedicoNavigation).Where(x => x.IdMedico == medicoBuscado.IdMedico)
+                    .Include(x => x.IdPacienteNavigation)
+                    .Include(x => x.IdMedicoNavigation)
+                    .Include(x => x.IdSituacaoNavigation)
+                    .Include(x => x.IdMedicoNavigation.IdEspecialidadeNavigation)
+                    .Select(x => new Consulta
+                    {
+                        IdConsulta = x.IdConsulta,
+                        IdMedicoNavigation = x.IdMedicoNavigation,
+                        IdPacienteNavigation = x.IdPacienteNavigation,
+                        IdSituacaoNavigation = x.IdSituacaoNavigation,
+                        Descricao = x.Descricao,
+                        DataConsulta = x.DataConsulta,
+                        HoraConsulta = x.HoraConsulta
+                    })
+                    .ToList();
             }
 
             return null;

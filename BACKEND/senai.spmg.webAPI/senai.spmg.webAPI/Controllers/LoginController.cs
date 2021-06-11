@@ -64,7 +64,11 @@ namespace senai.spmg.webAPI.Controllers
                     // new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation.TituloTipoUsuario)
 
                     // Armazena na Claim, o tipo de usuário que foi autenticado ("1")
-                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation.Permissao)
+                    //new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuarioNavigation.Permissao),
+                    new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
+
+                    // Armazena na Claim, o tipo de usuário que foi autenticado ("1") de forma personalizada
+                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())
                     };
 
                 // define a chave secreta ao token

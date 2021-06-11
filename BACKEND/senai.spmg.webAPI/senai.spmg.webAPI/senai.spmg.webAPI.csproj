@@ -20,9 +20,9 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
   </ItemGroup>
 
-    <PropertyGroup>
-	    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	    <NoWarn>$(NoWarn);1591</NoWarn>
-    </PropertyGroup>
+  <PropertyGroup>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
 
 </Project>

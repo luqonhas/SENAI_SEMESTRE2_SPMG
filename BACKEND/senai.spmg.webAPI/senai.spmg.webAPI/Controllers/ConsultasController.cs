@@ -26,22 +26,23 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
+        //[Authorize]
+        //[HttpGet]
+        //public IActionResult Get()
+        //{
+        //    try
+        //    {
+        //        return Ok(_consultaRepository.Listar());
+        //    }
+        //    catch (Exception codErro)
+        //    {
+        //        return BadRequest(codErro);
+        //    }
+        //}
+
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult Get()
-        {
-            try
-            {
-                return Ok(_consultaRepository.Listar());
-            }
-            catch (Exception codErro)
-            {
-                return BadRequest(codErro);
-            }
-        }
-
-        [Authorize(Roles = "Médico, Paciente")]
-        [HttpGet("minhas")]
-        public IActionResult GetMyConsults()
         {
             try
             {
@@ -56,6 +57,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -77,6 +79,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para cadastrar
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult Post(Consulta novaConsulta)
         {
@@ -93,6 +96,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // EXTRA - Método para cadastrar um parte das informações
+        [Authorize]
         [HttpPost("agendar")]
         public IActionResult PostConsult(ConsultaViewModel novaConsulta)
         {
@@ -124,6 +128,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar todas as informações
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Consulta consultaAtualizada)
         {
@@ -140,7 +145,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar uma parte das informações (descrição)
-        [Authorize(Roles = "Médico")]
+        [Authorize(Roles = "2")]
         [HttpPatch("{id}")]
         public IActionResult PatchDesc(int id, ConsultaViewModel descricaoAtualizado)
         {
@@ -170,8 +175,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar parte das informações (situação)
-        [Authorize(Roles = "Administrador")]
-        [HttpPatch("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpPatch("situacao/{id}")]
         public IActionResult PatchSit(int id, SituacaoViewModel status)
         {
             try
@@ -193,6 +198,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

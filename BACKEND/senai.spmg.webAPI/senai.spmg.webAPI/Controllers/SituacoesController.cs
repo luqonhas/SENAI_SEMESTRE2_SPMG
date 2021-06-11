@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Repositories;
@@ -22,6 +23,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -36,6 +38,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // Método para listar por ID
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

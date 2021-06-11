@@ -26,6 +26,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
+        [Authorize(Roles = "Administrador")]
         [HttpGet]
         public IActionResult Get()
         {
@@ -40,6 +41,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
@@ -61,6 +63,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para cadastrar
+        [Authorize]
         [HttpPost]
         public IActionResult Post(Paciente novoPaciente)
         {
@@ -97,6 +100,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar todas as informações
+        [Authorize]
         [HttpPut("{id}")]
         public IActionResult Put(int id, Paciente pacienteAtualizado)
         {
@@ -134,6 +138,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
+        [Authorize]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

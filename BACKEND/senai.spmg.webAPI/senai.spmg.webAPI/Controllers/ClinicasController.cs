@@ -37,6 +37,7 @@ namespace senai.spmg.webAPI.Controllers
         */
 
         // MVP - Método para listar
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -51,6 +52,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
