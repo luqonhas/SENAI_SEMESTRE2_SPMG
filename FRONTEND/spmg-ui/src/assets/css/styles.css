@@ -4,6 +4,12 @@
 
 /* RESET */
 
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 /* reseta algumas informações */
 body, h1, h2, p, ul, li, a{
     /* tira as margens padrão (deixa as coisas mais coladas) */
@@ -358,4 +364,283 @@ img{
     border-radius: 10px;
     font-family: 'Righteous', Helvetica, sans-serif;
     cursor: pointer;
+}
+
+
+
+/* LOGIN */
+
+.login{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.login-left-logo {
+    background: rgb(6,214,160);
+    background: linear-gradient(144deg, rgba(6,214,160,1) 0%, rgba(30,144,124,1) 100%);
+    height: 100%;
+    width: 45%;
+    position: absolute;
+}
+
+.login-background{
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    opacity: 15.55;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+.login-imagens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.login-logo{
+    max-width: 331px;
+    padding-top: 4.5em;
+}
+
+.login-medico{
+    max-width: 35em;
+}
+
+.login-right-form {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+}
+
+.login-form{
+    width: 100%;
+    height: 79%;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-center{
+    width: 26em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-center p{
+    font-family: 'Righteous', cursive;
+    line-height: 117px;
+    font-size: 3.3em;
+    line-height: 117px;
+    color: #32be8f;
+    padding-top: 0.95em;
+}
+
+.login-formulario{
+    display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	text-align: center;
+}
+
+.login-form-main{
+    width: 360px;
+}
+
+.login-formulario .login-input-div{
+	position: relative;
+    display: grid;
+    grid-template-columns: 7% 93%;
+    margin: 25px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid #d9d9d9;
+}
+
+.login-formulario .login-input-div .one{
+	margin-top: 0;
+}
+
+.i{
+	color: #d9d9d9;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.i i{
+	transition: .3s;
+}
+
+/* começou bugar */
+.login-input-div > div{
+    position: relative;
+	height: 45px;
+}
+
+/* bug */
+.login-input-div > div > h5{
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #999;
+	font-size: 18px;
+	transition: .3s;
+}
+
+.login-input-div:before, .login-input-div:after{
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	width: 0%;
+	height: 2px;
+	background-color: #38d39f;
+	transition: .4s;
+}
+
+.login-input-div:before{
+	right: 50%;
+}
+
+.login-input-div:after{
+	left: 50%;
+}
+
+.login-input-div.focus:before, .login-input-div.focus:after{
+	width: 50%;
+}
+
+.login-input-div.focus > div > h5{
+	top: -5px;
+	font-size: 15px;
+}
+
+.login-input-div.focus > .i > i{
+	color: #38d39f;
+}
+
+/* rodou algo */
+.login-input-div > div > input{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+	background: none;
+	padding: 0.5rem 0.7rem;
+	font-size: 1.2rem;
+	color: #555;
+	font-family: 'poppins', sans-serif;
+}
+
+.login-input-div .pass{
+	margin-bottom: 4px;
+}
+
+.login.input:-webkit-autofill{
+    background-color: white;
+}
+
+.login-a{
+	display: block;
+	text-align: right;
+	text-decoration: none;
+	color: #999;
+    font-weight: 600;
+	font-size: 0.9rem;
+	transition: .3s;
+}
+
+.login-a:hover{
+	color: #38d39f;
+}
+
+.login-btn{
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.login-btn:hover{
+	background-position: right;
+}
+
+.login-btn:disabled{
+    background-image: linear-gradient(to right, #999999, #999999, #999999);
+}
+
+.login-erro p{
+    font-size: 1rem;
+    margin-top: -70px;
+    font-family: 'Poppins', sans-serif;
+    color: #1481ba;
+}
+
+.login-links{
+    width: 100%;
+    height: 21%;
+    /* background-color: #787; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 4.3em;
+}
+
+.login-links a{
+    text-decoration: none;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-bottom: 7px;
+}
+
+.login-a1, .login-a2{
+    display: flex;
+    align-items: center;
+}
+
+.login-linha{
+    width: 45.05px;
+    height: 2px;
+    border-radius: 25px;
+    margin-right: 0.2em;
+}
+
+.login-a1 a{
+    color: #364958;
+}
+
+.login-a1 .login-linha{
+    background-color: #364958;
+}
+
+.login-a2 a{
+    color: #39A0ED;
+}
+
+.login-a2 .login-linha{
+    background-color: #39A0ED;
 }

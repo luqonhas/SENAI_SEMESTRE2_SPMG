@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import ConsultasComum from './pages/Comum/ConsultasComum';
 import NotFound from './pages/NotFound/NotFound';
 
+
 const PermissaoPaciente = ({component : Component}) => (
   <Route 
     render = {props =>

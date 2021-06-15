@@ -4,14 +4,15 @@ import axios from "axios";
 import {parseJwt} from '../../services/Auth';
 
 // Imgs
-import logo from '../../assets/img/login/logologin.svg';
-import poly from '../../assets/img/login/poly.svg';
-import doutores from '../../assets/img/login/doutoress.svg';
-import icone1 from '../../assets/img/login/iconezin.svg';
-import icone2 from '../../assets/img/login/cadeado.svg';
+import background from '../../assets/img/login-background.svg';
+import logo from '../../assets/img/login-logo.svg';
+import doutores from '../../assets/img/login-doutores.svg';
 
 // Styles
-import '../../assets/css/login.css';
+import '../../assets/css/styles.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
 
 class Login extends Component {
     constructor(props){
@@ -68,6 +69,13 @@ class Login extends Component {
         })
     }
 
+    limparCampos = () => {
+        this.setState({
+            email : '',
+            senha : ''
+        })
+    }
+
     atualizarEmail = (email) => {
         this.setState({[email.target.name] : email.target.value})
     }
@@ -76,75 +84,114 @@ class Login extends Component {
         this.setState({[senha.target.name] : senha.target.value})
     }
 
+    componentDidMount = () => {
+        const inputs = document.querySelectorAll(".login-input");
+
+        function addcl(){
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+
+        function remcl(){
+            let parent = this.parentNode.parentNode;
+            if(this.value == ""){
+                parent.classList.remove("focus");
+            }
+        }
+
+        inputs.forEach(input => {
+            input.addEventListener("focus", addcl);
+            input.addEventListener("blur", remcl);
+        });
+    }
+
     render() {
         return(
-            <body className="body-login">
-                <main className="main-login">
-                    <div className="left-logo">
-                        <img src={poly} draggable="false" class="poly" />
-                        <div className="imagens">
-                            <img src={logo} draggable="false" className="logo" />
-                            <img src={doutores} draggable="false" className="medico" />
+            <main>
+                <div className="login">
+                    
+                    <div className="login-left-logo">
+                        <img src={background} draggable="false" className="login-background" />
+
+                        <div className="login-imagens">
+                            <img src={logo} draggable="false" className="login-logo" />
+                            <img src={doutores} draggable="false" className="login-medico" />
                         </div>
+                        
                     </div>
 
-                    <div className="right-form">
-                        <div class="form">
-                            <div className="form-center">
+                    <div className="login-right-form">
+                        <div className="login-form">
+                            <div className="login-form-center">
                                 <p>Login</p>
-                                <div className="formulario">
-                                    <form className="form-login" onSubmit={this.gerarToken}>
-                                        <div className="email">
-                                            <img src={icone1} />
-                                            <input
-                                            type="email"
-                                            name="email"
-                                            value={this.state.email}
-                                            onChange={this.atualizarEmail}
-                                            placeholder="Digite seu e-mail"
-                                            />
+                                <div className="login-formulario">
+                                    <form onSubmit={this.gerarToken} className="login-form-main">
+                                        <div className="login-input-div one">
+                                            <div className="i">
+                                                <i className="fas fa-user"></i>
+                                            </div>
+
+                                            <div className="login-div">
+                                                <h5>E-mail</h5>
+                                                <input 
+                                                type="email"
+                                                name="email"
+                                                value={this.state.email}
+                                                onChange={this.atualizarEmail}
+                                                className="login-input" 
+                                                />
+                                            </div>
                                         </div>
 
-                                        <div className="senha">
-                                            <img src={icone2} />
-                                            <input 
-                                            type="password"
-                                            name="senha"
-                                            value={this.state.senha}
-                                            onChange={this.atualizarSenha}
-                                            placeholder="Digite sua senha"
-                                            />
+                                        <div className="login-input-div pass">
+                                            <div className="i">
+                                                <i className="fas fa-lock"></i>
+                                            </div>
+
+                                            <div className="login-div">
+                                                <h5>Senha</h5>
+                                                <input 
+                                                type="password"
+                                                name="senha"
+                                                value={this.state.senha}
+                                                onChange={this.atualizarSenha}
+                                                className="login-input" 
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="botao">
-                                            <a href="#"> [ esqueci a senha ] </a>
-                                            {
-                                                this.state.isLoading === true && (<button type="submit" disabled>Entrando...</button>)
-                                            }
-                                            {
-                                                this.state.isLoading === false && (<button type="submit" disabled={this.state.email === "" || this.state.senha === "" ? "none" : ""}>Entrar</button>)
-                                            }
+
+                                        <a href="#" className="login-a">[ esqueci senha ]</a>
+                                        {/* <input type="submit" className="login-btn" value="Entrar" /> */}
+                                        {
+                                            this.state.isLoading === true && (<input value="Entrando..." type="submit" className="login-btn" disabled />)
+                                        }
+                                        {
+                                            this.state.isLoading === false && (<input value="Entrar" className="login-btn" type="submit" disabled={this.state.email === "" || this.state.senha === "" ? "none" : ""} />)
+                                        }
+                                        <div className="login-erro">
+                                            <p>{this.state.erroMensagem}</p>
                                         </div>
                                     </form>
                                 </div>
-                                
+
                             </div>
                         </div>
 
-                        <div class="links">
-                            <div class="a1">
-                                <div class="linha"></div>
-                                <a href="#">criar conta</a>
+                        <div className="login-links">
+                            <div className="login-a1">
+                                <div className="login-linha"></div>
+                                <a href="#" className="login-link-a1">criar conta</a>
                             </div>
 
-                            <div class="a2">
-                                <div class="linha"></div>
-                                <a href="#">ajuda</a>
+                            <div className="login-a2">
+                                <div className="login-linha"></div>
+                                <a href="#" className="login-link-a2">ajuda</a>
                             </div>
-                            
                         </div>
                     </div>
-                </main>
-            </body>
+                    
+                </div>
+            </main>
         )
     }
 }
