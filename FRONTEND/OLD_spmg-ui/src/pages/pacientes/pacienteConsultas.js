@@ -46,7 +46,7 @@ class PacienteConsultas extends Component{
     render(){
         return(
             <main>
-                <Header nome={this.state.nomePaciente} logout={this.logout} />
+                <Header/>
 
                 <section className="consultas-bg">
                     <div className="consultas">
@@ -92,7 +92,7 @@ class PacienteConsultas extends Component{
                                                 <h2>DESCRIÇÃO</h2>
                                                 <div className="paciente-text-button">
                                                     <textarea readOnly>{consulta.descricao}</textarea>
-                                                    <button>EDITAR</button>
+                                                    {/* <button>EDITAR</button> */}
                                                 </div>
                                             </div>
                                         </div>

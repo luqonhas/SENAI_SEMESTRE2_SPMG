@@ -22,7 +22,7 @@ class Login extends Component {
     efetuaLogin = (event) => {
         event.preventDefault();
 
-        this.setState({ erro : '', isLoading: true });
+        this.setState({ erroMensagem : "", isLoading: true });
 
         axios.post("http://localhost:5000/api/login", {
             email : this.state.email,
@@ -74,7 +74,7 @@ class Login extends Component {
               isSuccessful : false,
               modalAlert : true
             });
-          });
+        });
     }
 
 

@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Righteous&display=swap');
+
+
+/* * {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.main-login {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.body-login{
+    width: 100%;
+} */
+
+.left-logo {
+    background: rgb(6,214,160);
+    background: linear-gradient(144deg, rgba(6,214,160,1) 0%, rgba(30,144,124,1) 100%);
+    height: 100%;
+    width: 40%;
+    position: absolute;
+}
+
+
+.left-logo img{
+    pointer-events: none;
+}
+
+.poly{
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    opacity: 15.55;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+}
+
+.imagens{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.logo{
+    max-width: 331px;
+    padding-top: 4.5em;
+}
+
+.medico{
+    max-width: 25em;
+}
+
+
+
+/* AQUI É A DIREITA DO FORMULARIO */
+.right-form {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    /* margin-left: 27.3em; */
+}
+
+
+.form{
+    width: 100%;
+    height: 79%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.form-center{
+    width: 26em;
+    height: 100%;
+
+    /* background-color: rgba(0, 111, 119, 0.356); */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.form-center p{
+    font-family: 'Righteous', cursive;
+    line-height: 117px;
+    font-size: 3.3em;
+    line-height: 117px;
+    color: #1E907C;
+    padding-top: 0.95em;
+}
+
+.formulario{
+    width: 100%;
+    height: 11em;
+}
+
+.form-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 10em;
+    color: #ccc;
+}
+
+.form-login input{
+    width: 100%;
+    color: #364958;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #1E907C;
+    background-color: #0000;
+    font-size: 1.5em;
+    font-weight: 400;
+    padding-left: 2em;
+    padding-bottom: 11px;
+}
+
+.form-login input::-webkit-input-placeholder {
+    color: #364958;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-weight: 700;
+   
+}
+
+.email{
+    display: flex;
+    align-items: center ;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.email input{
+    position: relative;
+}
+
+.email img{
+    width: 45px;
+    position: absolute;
+    padding-bottom: 15px;
+}
+
+.senha{
+    display: flex;
+    align-items: center ;
+    margin-bottom: 15px;
+}
+
+
+.senha input{
+ position: relative;
+}
+
+.senha img{
+    width: 40px;
+    position: absolute;
+    padding-bottom: 1.5em;
+}
+
+.botao{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.botao a{
+    color: #39A0ED; 
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+/* .botao a:hover{
+    color: #1E907C;
+} */
+
+.botao button{
+
+    border: none;
+    border-radius: 25px;
+    height: 2.4em;
+    width: 8.8em;
+
+    background-color: #364958;
+    color: #fff;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+
+
+}
+
+img::selection{
+    background-color: #00000000;
+}
+
+.botao button:active{
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #1E907C;
+    color: #1E907C;
+}
+
+.botao button:hover{
+    cursor: pointer;
+}
+
+.botao button:disabled{
+    background-color: gray;
+}
+/* FINAL DA ESTILIZAÇÃO DO FORMULARIO */
+
+.links{
+    width: 100%;
+    height: 21%;
+    /* background-color: #787; */
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.links a{
+    text-decoration: none;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    padding-bottom: 7px;
+}
+
+.a1, .a2{
+    display: flex;
+    align-items: center;
+}
+
+.linha{
+    width: 45.05px;
+    height: 2px;
+    border-radius: 25px;
+    margin-right: 0.2em;
+}
+
+.a1 a{
+    color: #364958;
+}
+
+.a1 .linha{
+    background-color: #364958;
+}
+
+.a2 a{
+    color: #39A0ED;
+}
+
+.a2 .linha{
+    background-color: #39A0ED;
+}
+
+
+
+/* RESPONSIVO */
+
+
+/* DESKTOP (TALVEZ NEM PRECISE) */
+
+@media screen and (min-width: 1024px) and (max-width: 1200px) {}
+
+
+/* OTHER RESOLUNTION */
+
+@media screen and (min-width: 720px) and (max-width: 900px) {}
+
+
+/* CELULARES  (aqui que vem o menu hamburguer) */
+
+@media screen and (min-width: 480px) and (max-width: 719px) {}
+
+
+/* SE DER EU FAÇO? */
+
+@media screen and (min-width: 320px) and (max-width: 479px) {}

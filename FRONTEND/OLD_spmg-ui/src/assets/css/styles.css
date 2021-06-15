@@ -13,7 +13,7 @@ body, h1, h2, p, ul, li, a{
 
 /* atribui novas configurações para o body */
 body{
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: "Nunito", Helvetica, Arial, sans-serif;
     color: #222222;
 }
 
