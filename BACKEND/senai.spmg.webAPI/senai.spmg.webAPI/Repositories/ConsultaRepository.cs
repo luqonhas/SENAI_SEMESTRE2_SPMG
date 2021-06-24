@@ -136,9 +136,14 @@ namespace senai.spmg.webAPI.Repositories
         {
             Consulta consultaBuscada = ctx.Consultas.FirstOrDefault(x => x.IdConsulta == id);
 
-            Medico medicoBuscado = ctx.Medicos.FirstOrDefault(x => x.IdUsuario == idUsuario);
+            // Medico medicoBuscado = ctx.Medicos.FirstOrDefault(x => x.IdUsuario == idUsuario);
 
-            if (descricao.Descricao != null && consultaBuscada.IdMedico == medicoBuscado.IdMedico)
+            // if (descricao.Descricao != null && consultaBuscada.IdMedico == medicoBuscado.IdMedico)
+            // {
+            //     consultaBuscada.Descricao = descricao.Descricao;
+            // }
+
+            if (descricao.Descricao != null)
             {
                 consultaBuscada.Descricao = descricao.Descricao;
             }

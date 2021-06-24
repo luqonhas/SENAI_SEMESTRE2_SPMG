@@ -1,6 +1,8 @@
 // Libs
 import { Component } from "react";
 import axios from "axios";
+
+// Services
 import {parseJwt} from '../../services/Auth';
 
 // Imgs
@@ -44,15 +46,15 @@ class Login extends Component {
 
                 switch (parseJwt().role) {
                     case "1":
-                        this.props.history.push('/administrador/dashboard');
+                        this.props.history.push('/dashboard');
                         break;
 
                     case "2":
-                        this.props.history.push('/medico/consultas');
+                        this.props.history.push('/dashboard');
                         break;
 
                     case "3":
-                        this.props.history.push('/paciente/consultas');
+                        this.props.history.push('/dashboard');
                         break;
                 
                     default:
@@ -138,6 +140,7 @@ class Login extends Component {
                                                 name="email"
                                                 value={this.state.email}
                                                 onChange={this.atualizarEmail}
+                                                autoComplete="off"
                                                 className="login-input" 
                                                 />
                                             </div>
@@ -160,7 +163,6 @@ class Login extends Component {
                                             </div>
                                         </div>
 
-                                        <a href="#" className="login-a">[ esqueci senha ]</a>
                                         {/* <input type="submit" className="login-btn" value="Entrar" /> */}
                                         {
                                             this.state.isLoading === true && (<input value="Entrando..." type="submit" className="login-btn" disabled />)
@@ -168,6 +170,7 @@ class Login extends Component {
                                         {
                                             this.state.isLoading === false && (<input value="Entrar" className="login-btn" type="submit" disabled={this.state.email === "" || this.state.senha === "" ? "none" : ""} />)
                                         }
+                                        <a href="#" className="login-a">[ esqueci senha ]</a>
                                         <div className="login-erro">
                                             <p>{this.state.erroMensagem}</p>
                                         </div>

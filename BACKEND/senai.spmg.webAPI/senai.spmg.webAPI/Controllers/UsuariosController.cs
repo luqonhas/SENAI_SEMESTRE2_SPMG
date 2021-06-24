@@ -33,8 +33,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
-        [Authorize(Roles = "Administrador")]
-        [HttpGet]
+        [Authorize(Roles = "1")]
+        [HttpGet("todos")]
         public IActionResult Get()
         {
             try
@@ -65,8 +65,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar por ID
-        [Authorize(Roles = "Administrador")]
-        [HttpGet("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpGet("buscar/{id}")]
         public IActionResult GetById(int id)
         {
             try
@@ -87,8 +87,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP & EXTRA - Método para cadastrar e retonar um email de boas vindas
-        [Authorize(Roles = "Administrador")]
-        [HttpPost]
+        [Authorize(Roles = "1")]
+        [HttpPost("cadastrar")]
         public IActionResult Post(Usuario novoUsuario, [FromForm]WelcomeRequest request, string emailUser)
         {
             try
@@ -117,8 +117,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar parte das informações
-        [Authorize(Roles = "Administrador")]
-        [HttpPatch("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpPatch("editarLogin/{id}")]
         public IActionResult Patch(int id, LoginViewModel usuarioAtualizado)
         {
             try
@@ -151,8 +151,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
-        [Authorize(Roles = "Administrador")]
-        [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpDelete("deletar/{id}")]
         public IActionResult Delete(int id)
         {
             try

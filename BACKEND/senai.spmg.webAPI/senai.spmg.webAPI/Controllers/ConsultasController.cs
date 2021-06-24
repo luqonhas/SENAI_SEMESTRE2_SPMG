@@ -27,7 +27,7 @@ namespace senai.spmg.webAPI.Controllers
 
        // MVP - Método para listar
        [Authorize]
-       [HttpGet("todas")]
+       [HttpGet("todos")]
         public IActionResult Get()
         {
             try
@@ -58,7 +58,7 @@ namespace senai.spmg.webAPI.Controllers
 
         // MVP - Método para listar por ID
         [Authorize]
-        [HttpGet("{id}")]
+        [HttpGet("buscar/{id}")]
         public IActionResult GetById(int id)
         {
             try
@@ -102,24 +102,41 @@ namespace senai.spmg.webAPI.Controllers
         {
             try
             {
-                Consulta consultaSituacao = _consultaRepository.BuscarPorSituacao(novaConsulta.idSituacao);
+                // Consulta consultaSituacao = _consultaRepository.BuscarPorSituacao(novaConsulta.idSituacao);
 
-                if (consultaSituacao != null)
+                // if (consultaSituacao != null)
+                // {
+                //     Consulta consultaBuscada = new Consulta
+                //     {
+                //         IdPaciente = novaConsulta.idPaciente,
+                //         IdMedico = novaConsulta.idMedico,
+                //         DataConsulta = novaConsulta.dataAgendamento,
+                //         HoraConsulta = novaConsulta.horaAgendamento,
+                //         IdSituacao = novaConsulta.idSituacao
+                //     };
+
+                //     _consultaRepository.Cadastrar(consultaBuscada);
+
+                //     return StatusCode(201);
+                // }
+                // return BadRequest("Nenhuma situação encontrada!");
+
+                if (novaConsulta.dataAgendamento < DateTime.Now)
                 {
-                    Consulta consultaBuscada = new Consulta
-                    {
-                        IdPaciente = novaConsulta.idPaciente,
-                        IdMedico = novaConsulta.idMedico,
-                        DataConsulta = novaConsulta.dataAgendamento,
-                        HoraConsulta = novaConsulta.horaAgendamento,
-                        IdSituacao = novaConsulta.idSituacao
-                    };
-
-                    _consultaRepository.Cadastrar(consultaBuscada);
-
-                    return StatusCode(201);
+                    return BadRequest("Informe uma data válida para consulta");
                 }
-                return BadRequest("Nenhuma situação encontrada!");    
+                Consulta consultaBuscada = new Consulta
+                {
+                    IdPaciente = novaConsulta.idPaciente,
+                    IdMedico = novaConsulta.idMedico,
+                    DataConsulta = novaConsulta.dataAgendamento,
+                    HoraConsulta = novaConsulta.horaAgendamento,
+                    IdSituacao = novaConsulta.idSituacao
+                };
+
+                _consultaRepository.Cadastrar(consultaBuscada);
+
+                return StatusCode(201);
             }
             catch (Exception codErro)
             {
@@ -129,7 +146,7 @@ namespace senai.spmg.webAPI.Controllers
 
         // MVP - Método para atualizar todas as informações
         [Authorize]
-        [HttpPut("tadas/{id}")]
+        [HttpPut("atualizar/{id}")]
         public IActionResult Put(int id, Consulta consultaAtualizada)
         {
             try
@@ -145,7 +162,7 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar uma parte das informações (descrição)
-        [Authorize(Roles = "2")]
+        [Authorize(Roles = "1, 2")]
         [HttpPatch("descricao/{id}")]
         public IActionResult PatchDesc(int id, ConsultaViewModel descricaoAtualizado)
         {

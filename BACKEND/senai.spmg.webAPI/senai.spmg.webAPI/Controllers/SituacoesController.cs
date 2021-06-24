@@ -23,8 +23,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para listar
-        [Authorize(Roles = "Administrador")]
-        [HttpGet]
+        [Authorize(Roles = "1")]
+        [HttpGet("todos")]
         public IActionResult Get()
         {
             try
@@ -38,8 +38,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // Método para listar por ID
-        [Authorize(Roles = "Administrador")]
-        [HttpGet("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpGet("buscar/{id}")]
         public IActionResult GetById(int id)
         {
             try

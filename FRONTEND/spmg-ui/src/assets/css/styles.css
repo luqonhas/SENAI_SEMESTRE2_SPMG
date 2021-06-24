@@ -10,6 +10,11 @@
 	box-sizing: border-box;
 }
 
+select{
+    border: none;
+    outline: none;
+}
+
 /* reseta algumas informações */
 body, h1, h2, p, ul, li, a{
     /* tira as margens padrão (deixa as coisas mais coladas) */
@@ -21,6 +26,7 @@ body, h1, h2, p, ul, li, a{
 body{
     font-family: Helvetica, Arial, sans-serif;
     color: #222222;
+    background-color: #fafafa;
 }
 
 /* aqui remove os estilos das listas */
@@ -45,325 +51,6 @@ img{
 *{
     /* não entendi */
     box-sizing: border-box;
-}
-
-
-
-/* MENU */
-
-.paciente-menu-bg{
-    background-image: url("../img/menu-background.svg");
-    margin-bottom: 40px;
-}
-
-.paciente-menu a{
-    color: white;
-}
-
-.paciente-menu{
-    max-width: 960px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.paciente-logo{
-    max-width: 130px;
-    margin-left: 15px;
-    user-select: none;
-}
-
-.paciente-nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-}
-
-.paciente-nav li{
-    padding: 0 15px;
-}
-
-.paciente-nav li a img{
-    padding: -15px 15px;
-    max-width: 102px;
-}
-
-.paciente-nav span{
-    color: #364958;
-}
-
-.paciente-nav a{
-    font-family: 'Righteous', Helvetica, sans-serif;
-    font-size: 1.2em;
-    display: block;
-    padding: 20px;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.paciente-nav li:nth-child(1){
-    line-height: 1.4;
-}
-
-.paciente-nav li:nth-child(2){
-    line-height: 0;
-    padding-top: 10px;
-}
-
-.paciente-nav li:nth-child(2)::after{
-    content: '';
-    display: block;
-    position:static;
-    margin-top: -5px;
-    border-bottom: 14px solid #06D6A0;
-}
-
-.paciente-nav li:nth-child(3){
-    margin-right: -20px;
-}
-
-
-
-/* CONSULTAS */
-
-.consultas-bg{
-    background-color: white;
-}
-
-.consultas-overflow{
-    background-color: white;
-    width: 720px;
-    height: 620px;
-    display: flex;
-    justify-content: center;
-    /* margin-bottom: 10px; */
-    overflow: auto;
-    padding: 20px 0;
-}
-
-.consultas-overflow::-webkit-scrollbar{
-    width: 10px;
-    background: white;
-}
-
-.consultas-overflow::-webkit-scrollbar-track{
-    width: 25px;
-    background: white;
-    /* border-radius: 10px; */
-    margin: 20px 0 5px 0;
-    background-color: white;
-}
-
-.consultas-overflow::-webkit-scrollbar-thumb{
-    background-color: #364958;
-    border-radius: 10px;
-    border: 2px solid white;
-}
-
-.consultas{
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.paciente-botoes-consulta{
-    display: flex;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
-}
-
-.paciente-botoes-consulta button{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 115px;
-    height: 80px;
-    margin: 0 30px 0 30px;
-    border-radius: 25px;
-}
-
-.paciente-botoes-consulta button:nth-child(1){
-    background-color: #06D6A0;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px #8a8a8a;
-}
-
-.paciente-botoes-consulta button:nth-child(2){
-    background-color: #646A70;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px #8a8a8a;
-}
-
-.paciente-botoes-consulta button:nth-child(3){
-    background-color: #39A0ED;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0px 2px 10px #8a8a8a;
-}
-
-.paciente-consultas-bg{
-    max-width: 960px;
-    width: 680px;
-    height: 400px;
-    background-color: #ccc;
-    border-radius: 20px;
-    background: linear-gradient(132.36deg, #E5E5E5 -50.64%, rgba(255, 255, 255, 0) 163.53%), #FFFFFF;
-    box-shadow: 3px 6px 4px rgba(0, 0, 0, 0.25);
-
-    margin-bottom: 50px;
-}
-
-.paciente-consultas{
-    margin-bottom: 80px;
-}
-
-.paciente-tipo-consulta{
-    width: 680px;
-    height: 65px;
-    background-color: #39A0ED;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    padding: 20px 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.paciente-tipo-consulta p{
-    font-size: 1.25em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: white;
-    line-height: 0;
-    font-family: 'Montserrat', Helvetica, sans-serif;
-}
-
-.paciente-info-consulta{
-    padding: 20px 70px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.paciente-nome-data-consulta img{
-    width: 130px;
-}
-
-.paciente-nome-data-consulta{
-    display: flex;
-    align-items: center;
-}
-
-.paciente-texto{
-    font-size: 1.2em;
-}
-
-.paciente-texto-top{
-    line-height: 1.3;
-    margin-bottom: 20px;
-    
-}
-
-.paciente-texto-top p:nth-child(1){
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.paciente-texto-top p strong:nth-child(1){
-    font-family: 'Righteous', Helvetica, sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.paciente-texto-top p:nth-child(2){
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.paciente-texto-bottom{
-    line-height: 1.4;
-}
-
-.paciente-texto-bottom p:nth-child(1){
-    font-family: 'Righteous', Helvetica, sans-serif;
-    font-weight: 400;
-}
-
-.paciente-texto-bottom p:nth-child(2){
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    font-weight: 400;
-}
-
-.paciente-linha-divisao{
-    width: 85%;
-    border-bottom: 5px solid black;
-    border-radius: 25px;
-}
-
-.paciente-hora-consulta{
-    padding-bottom: 55px;
-}
-
-.paciente-hora-consulta p:nth-child(1){
-    font-size: 2em;
-    font-family: 'Righteous', Helvetica, sans-serif;
-}
-
-.paciente-hora-consulta p:nth-child(2){
-    font-size: 1.5em;
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    font-weight: 400;
-}
-
-.paciente-desc-consulta{
-    padding: 20px 70px;
-}
-
-.paciente-desc-consulta h2{
-    text-align: center;
-    padding-bottom: 20px;
-}
-
-.paciente-text-button{
-    display: flex;
-    justify-content: space-between;
-}
-
-.paciente-text-button textarea{
-    resize: none;
-    border: none;
-    background-color: #f2f2f2;
-    width: 80%;
-    font-size: 1.2em;
-    font-family: 'Montserrat', Helvetica, sans-serif;
-    /* user-select: none; */
-}
-
-.paciente-text-button textarea::selection{
-    outline: none;
-    border: none;
-}
-
-.paciente-text-button button{
-    border: none;
-    background-color: #364958;
-    color: white;
-    width: 90px;
-    height: 40px;
-    font-size: 1em;
-    border-radius: 10px;
-    font-family: 'Righteous', Helvetica, sans-serif;
-    cursor: pointer;
 }
 
 
@@ -412,6 +99,7 @@ img{
 
 .login-medico{
     max-width: 35em;
+    user-select: none;
 }
 
 .login-right-form {
@@ -445,6 +133,7 @@ img{
     line-height: 117px;
     color: #32be8f;
     padding-top: 0.95em;
+    user-select: none;
 }
 
 .login-formulario{
@@ -497,6 +186,7 @@ img{
 	color: #999;
 	font-size: 18px;
 	transition: .3s;
+    user-select: none;
 }
 
 .login-input-div:before, .login-input-div:after{
@@ -543,7 +233,6 @@ img{
 	padding: 0.5rem 0.7rem;
 	font-size: 1.2rem;
 	color: #555;
-	font-family: 'poppins', sans-serif;
 }
 
 .login-input-div .pass{
@@ -556,12 +245,13 @@ img{
 
 .login-a{
 	display: block;
-	text-align: right;
+	text-align: center;
 	text-decoration: none;
 	color: #999;
     font-weight: 600;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	transition: .3s;
+    user-select: none;
 }
 
 .login-a:hover{
@@ -581,6 +271,7 @@ img{
 	color: #fff;
 	font-family: 'Poppins', sans-serif;
 	text-transform: uppercase;
+    letter-spacing: 1px;
 	margin: 1rem 0;
 	cursor: pointer;
 	transition: .5s;
@@ -592,22 +283,27 @@ img{
 
 .login-btn:disabled{
     background-image: linear-gradient(to right, #999999, #999999, #999999);
+    color: #ccc;
 }
 
 .login-erro p{
-    font-size: 1rem;
-    margin-top: -70px;
+    font-size: .9rem;
+    margin-top: -1px;
     font-family: 'Poppins', sans-serif;
-    color: #1481ba;
+    color: red;
+    user-select: none;
+    /* background: red; */
 }
 
 .login-links{
-    width: 100%;
+    display: block;
+    width: 90%;
     height: 21%;
     /* background-color: #787; */
     display: flex;
     flex-direction: column;
-    padding-left: 4.3em;
+    margin-left: 4.3em;
+    user-select: none;
 }
 
 .login-links a{
@@ -631,6 +327,11 @@ img{
 
 .login-a1 a{
     color: #364958;
+    transition: 0.3s;
+}
+
+.login-a1 a:hover{
+    color: #38d39f;
 }
 
 .login-a1 .login-linha{
@@ -638,9 +339,1366 @@ img{
 }
 
 .login-a2 a{
-    color: #39A0ED;
+    color: #1481ba;
+    transition: 0.3s;
+}
+
+.login-a2 a:hover{
+    color: #38d39f;
 }
 
 .login-a2 .login-linha{
-    background-color: #39A0ED;
+    background-color: #1481ba;
+}
+
+
+
+/* HEADER */
+
+.header{
+    height: 3.75em;
+    width: 100%;
+    margin-bottom: 50px;
+    background: linear-gradient(161.61deg, #06D6A0 21.12%, #1E907C 108.91%), #C4C4C4;
+}
+
+.header-background{
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    /* background-image: url(../img//header-background.svg); */
+    position: relative;
+}
+
+.header-poly{
+    width: 100%;
+    height: 100%;
+    mix-blend-mode: multiply;
+    opacity: 15.55;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-avatar{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 1;
+    list-style: none;
+}
+
+.header-avatar-submenu-dropdown{
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+    /* transition: .5s; */
+    opacity: 0;
+}
+
+.header-avatar-submenu-dropdown.active{
+    /* display: block; */
+    visibility: visible;
+    opacity: 1;
+}
+
+.header-ponta{
+    margin-top: 4px;
+    margin-bottom: -12px;
+    margin-left: 15px;
+}
+
+.header-ponta img{
+    z-index: 1;
+}
+
+.header-avatar-submenu{
+    margin-top: 10px;
+    position: absolute;
+    background-color: white;
+    width: 225px;
+    border-radius: 8px;
+    margin-left: -170px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8em;
+    box-shadow: -1px 4px 10px  rgba(0, 0, 0, 0.2);
+}
+
+/* .header-avatar-submenu::before{
+    z-index: 0;
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: 23px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    transform: rotate(45deg);
+} */
+
+.header-submenu-op1{
+    display: flex;
+    align-items: center;
+    width: 225px;
+    height: 40px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    /* background-color: red; */
+    padding: 15px;
+    /* transition: .2s; */
+}
+
+.header-submenu-op1 a{
+    color: #262626;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 140px 5px 0px;
+}
+
+.fa-user-circle{
+    color: #222;
+    font-size: 15px;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.header-submenu-op1:hover{
+    background-color: #f3f3f3;
+}
+
+.header-submenu-op2{
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    width: 225px;
+    height: 40px;
+    padding: 15px ;
+    /* background-color: yellow; */
+    /* transition: .2s; */
+}
+
+.header-submenu-op2 a{
+    color: #262626;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 51px 5px 0px;
+    width: 180px;
+}
+
+.fa-columns{
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.header-submenu-op2:hover{
+    background-color: #f3f3f3;
+}
+
+.header-submenu-op3{
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    width: 225px;
+    height: 40px;
+    /* background-color: yellow; */
+    /* transition: .2s; */
+}
+
+.header-submenu-op3 a{
+    color: #262626;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 80px 5px 0px;
+}
+
+.fa-cog{
+    color: #222;
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.header-submenu-op3:hover{
+    background-color: #f3f3f3;
+}
+
+.header-submenu-saida{
+    border-top: 1px solid #ccc;
+    padding: 10px 15px 10px 15px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    /* transition: .2s; */
+    z-index: 1;
+}
+
+.header-submenu-saida a{
+    color: #262626;
+    font-size: 13px;
+    font-weight: 400;
+    padding: 5px 180px 5px 0px;
+}
+
+.header-submenu-saida:hover{
+    background-color: #f3f3f3;
+}
+
+/* .header-avatar li:hover > .header-avatar-submenu-dropdown{
+    display: block;
+    transition: 1s;
+    animation: slideUp .3s;
+} */
+
+.header-avatar-img{
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.header-content{
+    /* background-color: red; */
+    width: 960px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-nav{
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.header-tag{
+    background-color: #364958;
+    padding: 4px 5px 4px 10px;
+    margin-right: -2px;
+}
+
+.header-tag-name{
+    margin-right: 3px;
+    background-color: #364958;
+    padding: 4px 10px 4px 10px;
+    text-transform: lowercase;
+}
+
+.header-tag-middle{
+    width: 5px;
+    height: 30px;
+    background-color: #364958;
+    margin-right: 3px;
+}
+
+
+
+/* KEYFRAMES ANIMATION */
+
+@keyframes slideUp{
+    0% {
+        opacity: 0;
+        transform: translate(15px 0 0 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+
+
+/* DASHBOARD */
+
+.dash-background{
+    max-width: 960px;
+    margin: 0 auto;
+    /* background-color: red; */
+}
+
+.dash-titulo{
+    background-color: #364958;
+    padding: 0 12px;
+    width: 309px;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.dash-titulo h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: white;
+    font-weight: 800;
+}
+
+.dash-cards-background{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+/* CARD CONSULTAS */
+
+.dash-card-consultas{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-consultas:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-consultas-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-consultas-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-consultas-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-consultas-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-consultas-img{
+    align-self: center;
+    margin-right: -15px;
+}
+
+
+
+/* CARD MEDICOS */
+
+.dash-card-medicos{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-medicos:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-medicos-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-medicos-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-medicos-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-medicos-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-medicos-img{
+    align-self: center;
+    margin-right: -10px;
+}
+
+
+
+/* CARD PACIENTES */
+
+.dash-card-pacientes{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-pacientes:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-pacientes-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-pacientes-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-pacientes-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-pacientes-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-pacientes-img{
+    align-self: center;
+    margin-right: 0px;
+}
+
+
+
+/* CARD ESPECIALIDADES */
+
+.dash-card-especialidades{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-especialidades:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-especialidades-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-especialidades-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-especialidades-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-especialidades-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-especialidades-img{
+    align-self: center;
+    margin-right: 0px;
+}
+
+
+
+/* CARD CLÍNICAS */
+
+.dash-card-clinicas{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-clinicas:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-clinicas-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-clinicas-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-clinicas-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-clinicas-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-clinicas-img{
+    align-self: center;
+    margin-right: -15px;
+}
+
+
+
+/* CARD USUÁRIOS */
+
+.dash-card-usuarios{
+    width: 300px;
+    height: 160px;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 15px;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.dash-card-usuarios:hover{
+    border: 1px solid #06D6A0;
+    transition: .2s;
+}
+
+.dash-usuarios-link{
+    display: flex;
+    justify-content: space-between;
+    width: 290px;
+    height: 130px;
+    position: relative;
+    /* background-color: red; */
+}
+
+.dash-usuarios-texto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.dash-usuarios-texto p:nth-child(1){
+    color: #06D6A0;
+    font-weight: 800;
+    font-size: 45px;
+}
+
+.dash-usuarios-texto p:nth-child(2){
+    color: #364958;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.dash-usuarios-img{
+    align-self: center;
+    margin-right: 0px;
+}
+
+
+
+/* CONSULTAS */
+
+.consultas-background{
+    /* background-color: red; */
+    max-width: 960px;
+    height: 570px;
+    margin: 0 auto;
+    display: block;
+}
+
+.consultas-titulo{
+    background-color: #364958;
+    padding: 0 12px;
+    width: 180px;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.consultas-titulo h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: white;
+    font-weight: 800;
+}
+
+.consultas-content-background{
+    /* background-color: green; */
+    width: 100%;
+    height: 95%;
+    display: flex;
+}
+
+.consultas-btns{
+    width: 180px;
+    margin-right: 15px;
+    /* background-color: yellow; */
+}
+
+.consultas-btns button{
+    width: 180px;
+    height: 60px;
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.consultas-btns button:nth-child(1){
+    font-size: 18px;
+    background-color: #1481BA;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.consultas-btns button:nth-child(2){
+    font-size: 18px;
+    background-color: #36CC9A;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.consultas-card-consulta-background{
+    width: 820px;
+    height: 100%;
+    /* background-color: pink; */
+    scroll-behavior: smooth;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.consultas-card-consulta{
+    width: 350px;
+    height: 510px;
+    background-color: white;
+    border: 1px solid #364958;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    margin-right: 10px;
+    transition: .3s;
+}
+
+/* .consultas-card-consulta{
+    height: 510px;
+} */
+
+.consultas-card-consulta:hover{
+    transition: .3s;
+    border: 1px solid #36CC9A;
+}
+
+/* CARDS CONSULTAS - SCROLL */
+
+.consultas-card-consulta-background::-webkit-scrollbar{
+    width: 10px;
+    background: #fafafa;
+}
+
+.consultas-card-consulta-background::-webkit-scrollbar-track{
+    width: 25px;
+    background: white;
+    margin: 5px 0 5px 0;
+    background-color: #fafafa;
+}
+
+.consultas-card-consulta-background::-webkit-scrollbar-thumb{
+    background-color: #364958;
+    border-radius: 10px;
+    border: 2px solid #fafafa;
+}
+
+
+/* AGENDADA */
+.consultas-card-situacao-agendada{
+    background-color: #36CC9A;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.consultas-card-situacao-agendada p{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* REALIZADA */
+.consultas-card-situacao-realizada{
+    background-color: #1481BA;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.consultas-card-situacao-realizada p{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*  CANCELADA */
+.consultas-card-situacao-cancelada{
+    background-color: #364958;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 30px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.consultas-card-situacao-cancelada p{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.consultas-card-dia-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.consultas-card-dia{
+    width: 190px;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+.consultas-card-data{
+    padding-right: 10px;
+}
+
+.consultas-card-data-background{
+    width: 120px;
+    height: 20px;
+    background-color: #364958;
+}
+
+.consultas-card-data-background p{
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.consultas-card-data p:nth-child(2){
+    color: #364958;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.consultas-card-hora{
+    padding-right: 10px;
+}
+
+.consultas-card-hora-background{
+    width: 60x;
+    height: 20px;
+    background-color: #364958;
+    padding-right: 10px;
+}
+
+.consultas-card-hora-background p{
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.consultas-card-hora p:nth-child(2){
+    color: #364958;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.consultas-card-btn-inicio{
+    /* background-color: red; */
+    width: 120px;
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: flex-end; */
+}
+
+.consultas-card-btn-inicio button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 43px;
+    height: 43px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.consultas-card-btn-inicio img{
+    user-select: none;
+}
+
+.consultas-card-btn-inicio button:nth-child(1){
+    background-color: #1481BA;
+}
+
+.consultas-card-btn-inicio button:nth-child(2){
+    background-color: #364958;
+}
+
+
+
+.consultas-card-paciente{
+    padding: 0 10px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+.consultas-card-paciente p{
+    font-size: 18px;
+    font-weight: 800;
+    color: #36CC9A;
+    text-transform: uppercase;
+}
+
+.consultas-card-paciente-linha{
+    display: flex;
+}
+
+.consultas-card-paciente-linha img:nth-child(1){
+    border: 2px solid #36CC9A;
+    border-radius: 50px;
+}
+
+.consultas-card-paciente-linha img:nth-child(2){
+    margin-left: -14px;
+}
+
+.consultas-card-paciente-barra{
+    display: flex;
+    align-items: center;
+}
+
+.consultas-card-paciente-barra p{
+    padding: 5px;
+    width: 260px;
+    height: 55px;
+    background-color: #36CC9A;
+    color: white;
+}
+
+
+.consultas-card-medico{
+    padding: 0 10px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+.consultas-card-medico p{
+    font-size: 18px;
+    font-weight: 800;
+    color: #1481ba;
+    text-transform: uppercase;
+}
+
+.consultas-card-medico-linha{
+    display: flex;
+}
+
+.consultas-card-medico-linha{
+    display: flex;
+}
+
+.consultas-card-medico-img{
+    border: 2px solid #1481ba;
+    border-radius: 50px;
+    margin-left: -14px;
+}
+
+.consultas-card-medico-barra{
+    display: flex;
+    align-items: center;
+}
+
+.consultas-card-medico-barra p{
+    padding: 5px;
+    width: 260px;
+    height: 55px;
+    background-color: #1481ba;
+    color: white;
+}
+
+.consultas-card-medico-especialidade{
+    width: 330px;
+    height: 30px;
+    background-color: #1481ba;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-top: 2px;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.consultas-card-medico-especialidade p{
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+}
+
+
+
+.consultas-card-descricao{
+    padding: 0 10px 10px 10px;
+}
+
+.consultas-card-descricao p{
+    font-size: 18px;
+    font-weight: 800;
+    color: #364958;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+.consultas-card-descricao-linha{
+    display: flex;
+}
+
+.consultas-card-descricao-linha button{
+    width: 50px;
+    height: 160px;
+    border: none;
+    background-color: #32be8f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 9px;
+    cursor: pointer;
+}
+
+.consultas-card-descricao-linha button:disabled{
+    background-color: #364958;
+}
+
+.consultas-card-descricao-campo{
+    padding: 5px;
+    width: 270px;
+    height: 160px;
+    background-color: #fafafa;
+    margin-right: 5px;
+    border: 2px solid #364958;
+    border-bottom-left-radius: 9px;
+    resize: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: none;
+    color: #364958;
+}
+
+.consultas-card-editar-block{
+    width: 50px;
+    height: 160px;
+    background-color: #364958;
+    border-bottom-right-radius: 9px;
+}
+
+@keyframes hide {
+    from { opacity: 1 }
+    to   { opacity: 0 }
+}
+
+.consultas-card-editar-sucesso{
+    display: flex;
+    justify-content: center;
+    animation: hide 2s 3s forwards;
+    /* background-color: #36CC9A; */
+}
+
+.consultas-card-editar-sucesso p{
+    color: white;
+    font-size: 10px;
+}
+
+
+
+/* MODAL BASE */
+
+.modal{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(54, 73, 88, 0.6);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    transition: 2s;
+}
+
+.modal-consulta{
+    width: 410px;
+    height: 355px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #364958;
+    transition: 2s;
+}
+
+.modal-consulta-situacao{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: #36CC9A;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    height: 40px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    transition: 2s;
+}
+
+.modal-consulta-dia{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 5px 0 5px;
+    margin: 0;
+    width: 100%;
+    /* background-color: red; */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-consulta-data{
+    padding-right: 20px;
+}
+
+.modal-consulta-data-background{
+    width: 130px;
+    height: 24px;
+    background-color: #364958;
+}
+
+.modal-consulta-data-background p{
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.modal-consulta-data input{
+    color: #364958;
+    font-size: 18px;
+    font-weight: 800;
+    width: 130px;
+    outline: none;
+    border: none;
+}
+
+.modal-consulta-data input[type="date"]::-webkit-calendar-picker-indicator{
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+.modal-consulta-hora-background{
+    width: 88px;
+    height: 24px;
+    background-color: #364958;
+    padding-right: 10px;
+}
+
+.modal-consulta-hora-background p{
+    color: white;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.modal-consulta-hora input{
+    color: #364958;
+    font-size: 18px;
+    font-weight: 800;
+    width: 90px;
+    outline: none;
+    border: none;
+}
+
+.modal-consulta-data input[type="time"]::-webkit-calendar-picker-indicator{
+    padding: 0;
+    margin: 0;
+}
+
+.modal-consulta-paciente{
+    padding: 5px 10px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-consulta-paciente p{
+    font-size: 18px;
+    font-weight: 800;
+    color: #36CC9A;
+    text-transform: uppercase;
+}
+
+.modal-consulta-paciente-linha{
+    display: flex;
+}
+
+.modal-consulta-paciente-linha img:nth-child(1){
+    border: 2px solid #36CC9A;
+    border-radius: 50px;
+}
+
+.modal-consulta-paciente-linha img:nth-child(2){
+    margin-left: -14px;
+}
+
+.modal-consulta-paciente-barra{
+    display: flex;
+    align-items: center;
+}
+
+.modal-consulta-paciente-barra select{
+    padding: 5px;
+    width: 320px;
+    height: 55px;
+    background-color: #36CC9A;
+    color: white;
+    text-transform: uppercase;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.modal-consulta-medico{
+    padding: 0 10px 10px 10px;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+}
+
+.modal-consulta-medico p{
+    font-size: 18px;
+    font-weight: 800;
+    color: #1481ba;
+    text-transform: uppercase;
+}
+
+.modal-consulta-medico-linha{
+    display: flex;
+}
+
+.modal-consulta-medico-linha{
+    display: flex;
+}
+
+.modal-consulta-medico-img{
+    border: 2px solid #1481ba;
+    border-radius: 50px;
+    margin-left: -14px;
+}
+
+.modal-consulta-medico-barra{
+    display: flex;
+    align-items: center;
+}
+
+.modal-consulta-medico-barra select{
+    padding: 10px;
+    width: 320px;
+    height: 55px;
+    background-color: #1481ba;
+    color: white;
+    text-transform: uppercase;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.modal-consulta-medico-barra select:focus{
+    outline: none;
+    border: none;
+}
+
+.modal-consulta-medico-especialidade{
+    width: 390px;
+    height: 30px;
+    background-color: #1481ba;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin-top: 3px;
+}
+
+.modal-consulta-medico-especialidade p{
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+}
+
+.modal-consulta-btns{
+    padding: 10px 10px 0 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-consulta-btns button{
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    width: 190px;
+    height: 44px;
+    border: none;
+}
+
+.modal-consulta-cadastrar button{
+    background-color: #36CC9A;
+    border-bottom-left-radius: 9px;
+}
+
+.modal-consulta-cadastrar button:disabled{
+    background-color: #364958;
+}
+
+.modal-consulta-cancelar button{
+    background-color: #1481BA;
+    border-bottom-right-radius: 9px;
+}
+
+.modal-consulta-cancelar button:disabled{
+    background-color: #364958
 }

@@ -26,7 +26,7 @@ namespace senai.spmg.webAPI.Controllers
 
         // MVP - Método para listar
         [Authorize]
-        [HttpGet]
+        [HttpGet("todos")]
         public IActionResult Get()
         {
             try
@@ -41,7 +41,7 @@ namespace senai.spmg.webAPI.Controllers
 
         // MVP - Método para listar por ID
         [Authorize]
-        [HttpGet("{id}")]
+        [HttpGet("buscar/{id}")]
         public IActionResult GetById(int id)
         {
             try
@@ -62,8 +62,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para cadastrar e retornar os dados cadastrados
-        [Authorize(Roles = "Administrador")]
-        [HttpPost]
+        [Authorize(Roles = "1")]
+        [HttpPost("cadastrar")]
         public IActionResult Post(Especialidade novaEspecialidade)
         {
             try
@@ -85,8 +85,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para atualizar todas as informações
-        [Authorize(Roles = "Administrador")]
-        [HttpPut("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpPut("atualizar/{id}")]
         public IActionResult Put(int id, Especialidade especialidadeAtualizada)
         {
             try
@@ -114,8 +114,8 @@ namespace senai.spmg.webAPI.Controllers
         }
 
         // MVP - Método para deletar
-        [Authorize(Roles = "Administrador")]
-        [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
+        [HttpDelete("deletar/{id}")]
         public IActionResult Delete(int id)
         {
             try
