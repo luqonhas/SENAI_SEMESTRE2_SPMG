@@ -42,11 +42,11 @@ namespace senai.spmg.webAPI
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
-            // adiciona a política CORS ao projeto
+            // adiciona a polï¿½tica CORS ao projeto
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy",
                     builder => {
-                        builder.WithOrigins("http://localhost:3000")
+                        builder.WithOrigins("http://localhost:3000", "http://localhost:19006", "http://localhost:19007")
                                                                     .AllowAnyHeader()
                                                                     .AllowAnyMethod();
                     }
@@ -66,7 +66,7 @@ namespace senai.spmg.webAPI
             services
                 .AddAuthentication(options =>
                 {
-                    // definiu a forma de autenticação
+                    // definiu a forma de autenticaï¿½ï¿½o
                     options.DefaultAuthenticateScheme = "JwtBearer";
                     options.DefaultChallengeScheme = "JwtBearer";
                 })
