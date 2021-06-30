@@ -44,7 +44,7 @@ export default class Dashboard extends Component {
     }
 
     render() {
-      const valorToken = AsyncStorage.getItem('user-token');
+      
       return(
         <View style={styles.dash_container}>
 

@@ -17,10 +17,6 @@ import { menuToggle } from '../services/Toggle';
 
 
 class Header extends Component{
-    // componentDidMount = () => {
-    //     const toggleMenu = document.querySelector('.header-avatar-img');
-    //     toggleMenu.classList.toggle('active')
-    // }
 
     render(){
         return(

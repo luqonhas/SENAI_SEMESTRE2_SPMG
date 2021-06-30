@@ -272,7 +272,11 @@ class Consulta extends Component{
             <div className="consultas-content-background" onClick={menuToggleOff}>
                 <div className="consultas-btns">
                     <button onClick={() => {this.setState({ordenado : !this.state.ordenado}); this.buscarConsultas()}}>Ordenar por data <img src={ordenar} draggable="false" /></button>
-                    <button onClick={() => this.setState({isModalOpen : true})}>+ Nova consulta <img src={cadastrar} draggable="false" /></button>
+                    {
+                        parseJwt().role === '1' ?
+                        <button onClick={() => this.setState({isModalOpen : true})}>+ Nova consulta <img src={cadastrar} draggable="false" /></button>
+                        : ''
+                    }
                 </div>
 
                 <div className="consultas-card-consulta-background">
