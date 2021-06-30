@@ -42,11 +42,11 @@ namespace senai.spmg.webAPI
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
-            // adiciona a pol�tica CORS ao projeto
+            // adiciona a política CORS ao projeto
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy",
                     builder => {
-                        builder.WithOrigins("http://localhost:3000", "http://localhost:19006", "http://localhost:19007")
+                        builder.WithOrigins("http://localhost:3000", "http://localhost:19006")
                                                                     .AllowAnyHeader()
                                                                     .AllowAnyMethod();
                     }
