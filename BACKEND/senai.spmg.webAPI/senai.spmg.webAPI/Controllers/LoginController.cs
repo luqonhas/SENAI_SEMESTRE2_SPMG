@@ -35,6 +35,9 @@ namespace senai.spmg.webAPI.Controllers
                 // busca o usuário pelo email e senha
                 Usuario usuarioBuscado = _loginRepository.Logar(login.email, login.senha);
 
+                Paciente pacienteBuscado = new Paciente();
+                Medico medicoBuscado = new Medico();
+
                 // se os dados estiverem errados...
                 if (usuarioBuscado == null)
                 {
@@ -68,7 +71,11 @@ namespace senai.spmg.webAPI.Controllers
                     new Claim(ClaimTypes.Role, usuarioBuscado.IdTipoUsuario.ToString()),
 
                     // Armazena na Claim, o tipo de usuário que foi autenticado ("1") de forma personalizada
-                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString())
+                    new Claim("role", usuarioBuscado.IdTipoUsuario.ToString()),
+
+                    new Claim("nomePaciente", usuarioBuscado.IdTipoUsuario == 2 ? $"{pacienteBuscado.NomePaciente}" : "" ),
+
+                    new Claim("nomeMedico", usuarioBuscado.IdTipoUsuario == 3 ? $"{medicoBuscado.NomeMedico}" : "" ),
                     };
 
                 // define a chave secreta ao token

@@ -47,7 +47,7 @@ export default class Navigation extends Component {
                 <bottomTab.Navigator
                     shifting
                     initialRouteName='Dashboard'
-                    activeColor="#36CC9A"
+                    activeColor="#FFF"
                     inactiveColor="#878787"
                     barStyle={{ backgroundColor: "#364958", height: 55 }}
                     showIcon={true}
