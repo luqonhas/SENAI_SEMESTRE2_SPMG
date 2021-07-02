@@ -117,6 +117,25 @@ namespace senai.spmg.webAPI.Repositories
             return usuarioSemSenha.ToList();
         }
 
+        public string BuscarNomePorId(int id)
+        {
+            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.IdUsuario == id);
+
+            Medico medicoBuscado = ctx.Medicos.FirstOrDefault(x => x.IdUsuario == id);
+
+            if (pacienteBuscado != null)
+            {
+                return pacienteBuscado.NomePaciente;
+            }
+
+            if (medicoBuscado != null)
+            {
+                return medicoBuscado.NomeMedico;
+            }
+
+            return "Administrador";
+        }
+
 
     }
 }

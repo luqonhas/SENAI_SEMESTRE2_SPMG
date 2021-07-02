@@ -1,0 +1,78 @@
+TELA PERFIL:
+- exibir nome;
+- exibir email;
+- exibir e esconder informações pessoais (RG, CPF, etc);
+- botão para editar seus dados.
+
+TELA DE EDIÇÃO DE PERFIL:
+- método de alterar foto;
+- método de mudar email e senha individualmente;
+- extra: método de medalhas para pacientes mais antigos e novos;
+- extra: método de conquistas, caso o paciente tenha uma tal quantidade de consultas canceladas/agendadas/realizadas vai ganhando emblemas.
+
+TELA DE CADASTRO (PÚBLICA):
+- método de cadastrar com paciente como padrão;
+- método de repetir a senha duas vezes para confirmar a senha;
+- método de adicionar pontos e traços em inputs de RG, CPF e telefone;
+- extra: método para verificar em tempo real se o email existe no sistema, colocando um ✅ ou um ❎.
+
+TELA DE LISTAR MÉDICOS:
+- método de listar;
+- método de deletar;
+- extra: método de editar permissão, podendo tirar a permissão de médico e trocando para ADM ou PACIENTE;
+- extra: método de buscar em tempo real com um filtro num input para buscar os médicos pelo email.
+
+TELA DE LISTAR PACIENTES:
+- (mesma coisa da tela de médicos).
+
+TELA DE LISTAR ESPECIALIDADES:
+- método de listar;
+- método de deletar;
+- método de cadastrar;
+- extra: método de buscar em tempo real com um filtro num input para buscar as especialidades pelo nome;
+- extra: método de contar quantos médicos estão em cada especialidade;
+- extra: método de abrir um modal mostrando os perfis dos médicos que estão em cada especialidade.
+
+TELA DE LISTAR CLÍNICAS:
+- método de listar;
+- método de deletar;
+- método de cadastrar;
+- extra: método de buscar em tempo real com um filtro num input para buscar as clínicas pelo nome;
+- extra: método de contar quantos médicos trabalham em cada clínica.
+
+TELA DE LISTAR USUÁRIOS:
+- método de listar;
+- método de excluir;
+- extra: método de buscar em tempo real com um filtro num input para buscar os usuários pelo email;
+- extra: método de alterar a permissão, podendo mudar para ADM, MÉDICO ou PACIENTE.
+
+HEADER DROP-DOWN:
+- método de darkmode;
+- método de alterar língua do site;
+- extra: quando clicar fora do balão;
+- extra: página para listar medalhas/conquistas do usuário.
+
+TELA DE CONSULTAS:
+- método de alterar situação manualmente;
+- extra: método de alterar situação automaticamente quando passar da data da consulta;
+- método de validação para não conseguir cadastrar consultas com datas anteriores ao dia atual;
+- método para esconder consultas realizadas e canceladas, dando destaque para as agendadas;
+- método de listar somente realizadas/agendadas/canceladas;
+- extra: paciente/médico solicitar consulta para o ADM aceitar ou não.
+
+NAS SENHAS:
+- método de exibir e esconder senha no input.
+
+TELA DE ESQUECI SENHA (EXTRA):
+- input para colocar o email do usuário para enviar um link para o usuário ser direcionado para a tela de alterar senha;
+- método de alterar senha;
+- método de repetir senha;
+- extra: método de envio de senha provisória para o email colocado no input.
+
+CARREGAMENTO DE TELAS E BOTÕES:
+- método/css de bolinha rodando no botão ou no meio da tela quando a tela está com o isLoading = true.
+
+TELA DE AJUDA (EXTRA):
+- método de modal com texto respondendo perguntas genéricas (como se logar, etc);
+- extra: método para o usuário enviar a pergunta num chat para ser respondido por um ADM;
+- extra: método para o usuário enviar a pergunta diretamente para o email do ADM ou ADMs.

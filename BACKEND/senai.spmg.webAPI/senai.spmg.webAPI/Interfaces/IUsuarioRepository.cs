@@ -25,5 +25,7 @@ namespace senai.spmg.webAPI.Interfaces
         Usuario Logar(string email, string senha);
 
         List<Usuario> ListarPerfil(int id);
+
+        string BuscarNomePorId(int id);
     }
 }
