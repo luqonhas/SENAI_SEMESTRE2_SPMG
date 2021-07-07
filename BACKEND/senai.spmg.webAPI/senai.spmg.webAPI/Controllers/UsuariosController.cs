@@ -150,6 +150,43 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize]
+        [HttpPatch("email")]
+        public IActionResult PatchEmail(EmailViewModel emailAtualizado)
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Usuario usuarioBuscado = _usuarioRepository.BuscarPorId(idUsuario);
+
+                Usuario usuarioEmail = _usuarioRepository.BuscarPorEmail(emailAtualizado.Email);
+
+                // return StatusCode(200, telefoneAtualizado);
+                if (usuarioBuscado != null)
+                {
+                    if (emailAtualizado.Email != null && usuarioEmail == null)
+                    {
+                        usuarioBuscado = new Usuario
+                        {
+                            Email = emailAtualizado.Email
+                        };
+
+                        _usuarioRepository.AlterarEmail(idUsuario, usuarioBuscado);
+
+                        return StatusCode(204);
+                    }
+                    return BadRequest("E-mail já utilizado!");
+                }
+                return BadRequest("Nenhum usuário encontrado!");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         // MVP - Método para deletar
         [Authorize(Roles = "1")]
         [HttpDelete("deletar/{id}")]

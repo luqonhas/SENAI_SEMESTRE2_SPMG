@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
 using senai.spmg.webAPI.Repositories;
+using senai.spmg.webAPI.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -55,6 +56,22 @@ namespace senai.spmg.webAPI.Controllers
                 }
 
                 return Ok(pacienteBuscado);
+            }
+            catch (Exception codErro)
+            {
+                return BadRequest(codErro);
+            }
+        }
+
+        [Authorize]
+        [HttpGet("perfil")]
+        public IActionResult GetProfile()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                return Ok(_pacienteRepository.ListarPerfil(idUsuario));
             }
             catch (Exception codErro)
             {
@@ -134,6 +151,77 @@ namespace senai.spmg.webAPI.Controllers
             catch (Exception codErro)
             {
                 return BadRequest(codErro);
+            }
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPatch("telefone")]
+        public IActionResult PatchPhone(TelefoneViewModel telefoneAtualizado)
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Paciente pacienteBuscado = _pacienteRepository.BuscarUsuarioPorId(idUsuario);
+
+                Paciente pacienteTelefone = _pacienteRepository.BuscarPorTelefone(telefoneAtualizado.TelefonePaciente);
+
+                // return StatusCode(200, telefoneAtualizado);
+                if (pacienteBuscado != null)
+                {
+                    if (telefoneAtualizado.TelefonePaciente != null && pacienteTelefone == null)
+                    {
+                        pacienteBuscado = new Paciente
+                        {
+                            TelefonePaciente = telefoneAtualizado.TelefonePaciente
+                        };
+
+                        _pacienteRepository.AlterarTelefone(idUsuario, pacienteBuscado);
+
+                        return StatusCode(204);
+                    }
+                    return BadRequest("Telefone já utilizado!");
+                }
+                return BadRequest("Nenhum paciente encontrado!");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [Authorize(Roles = "3")]
+        [HttpPatch("endereco")]
+        public IActionResult PatchEndereco(EnderecoViewModel enderecoAtualizado)
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                Paciente pacienteBuscado = _pacienteRepository.BuscarUsuarioPorId(idUsuario);
+
+                // return StatusCode(200, telefoneAtualizado);
+                if (pacienteBuscado != null)
+                {
+                    if (enderecoAtualizado.Endereco != null)
+                    {
+                        pacienteBuscado = new Paciente
+                        {
+                            Endereco = enderecoAtualizado.Endereco
+                        };
+
+                        _pacienteRepository.AlterarEndereco(idUsuario, pacienteBuscado);
+
+                        return StatusCode(204);
+                    }
+                }
+                return BadRequest("Nenhum paciente encontrado!");
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
             }
         }
 

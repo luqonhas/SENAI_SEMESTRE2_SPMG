@@ -27,5 +27,9 @@ namespace senai.spmg.webAPI.Interfaces
         List<Usuario> ListarPerfil(int id);
 
         string BuscarNomePorId(int id);
+
+        int BuscarPacientePorId(int id);
+
+        bool AlterarEmail(int id, Usuario email);
     }
 }

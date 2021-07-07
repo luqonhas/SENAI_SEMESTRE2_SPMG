@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using senai.spmg.webAPI.Contexts;
 using senai.spmg.webAPI.Domains;
 using senai.spmg.webAPI.Interfaces;
@@ -65,7 +66,7 @@ namespace senai.spmg.webAPI.Repositories
         // MVP - Método de buscar pacientes por ID
         public Paciente BuscarPorId(int id)
         {
-            return ctx.Pacientes.Include(x => x.Consulta).FirstOrDefault(x => x.IdPaciente == id);
+            return ctx.Pacientes.Include(x => x.Consulta).Include(x => x.IdUsuarioNavigation).FirstOrDefault(x => x.IdPaciente == id);
         }
 
         // MVP - Método de buscar CPF dos pacientes para complementar outros métodos
@@ -85,6 +86,18 @@ namespace senai.spmg.webAPI.Repositories
         public Paciente BuscarPorRG(string rg)
         {
             Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.Rg == rg);
+
+            if (pacienteBuscado != null)
+            {
+                return pacienteBuscado;
+            }
+
+            return null;
+        }
+
+        public Paciente BuscarPorTelefone(string telefone)
+        {
+            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.TelefonePaciente == telefone);
 
             if (pacienteBuscado != null)
             {
@@ -114,6 +127,73 @@ namespace senai.spmg.webAPI.Repositories
         public List<Paciente> Listar()
         {
             return ctx.Pacientes.Include(x => x.Consulta).ToList();
+        }
+
+        public List<Paciente> ListarPerfil(int id)
+        {
+            return ctx.Pacientes
+                .Include(x => x.IdUsuarioNavigation)
+                .Where(x => x.IdUsuario == id)
+                .ToList();
+        }
+
+        public bool AlterarTelefone(int id, Paciente telefone)
+        {
+            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.IdUsuario == id);
+
+            if (pacienteBuscado == null)
+            {
+                return false;
+            }
+
+            if (telefone.TelefonePaciente != null)
+            {
+                pacienteBuscado.TelefonePaciente = telefone.TelefonePaciente;
+            }
+
+            ctx.Update(pacienteBuscado);
+
+            ctx.SaveChanges();
+
+            return true;
+        }
+
+        public bool AlterarEndereco(int id, Paciente endereco)
+        {
+            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.IdUsuario == id);
+
+            if (pacienteBuscado == null)
+            {
+                return false;
+            }
+
+            if (endereco.Endereco != null)
+            {
+                pacienteBuscado.Endereco = endereco.Endereco;
+            }
+
+            ctx.Update(pacienteBuscado);
+
+            ctx.SaveChanges();
+
+            return true;
+        }
+
+        public Paciente BuscarUsuarioPorId(int idUsuario)
+        {
+            return ctx.Pacientes.Select(x => new Paciente
+            {
+                IdUsuario = x.IdUsuario,
+                IdPaciente = x.IdPaciente,
+                Cpf = x.Cpf,
+                Rg = x.Rg,
+                Endereco = x.Endereco,
+                NomePaciente = x.NomePaciente,
+                DataNascimento = x.DataNascimento,
+                TelefonePaciente = x.TelefonePaciente,
+                IdUsuarioNavigation =
+                new Usuario { Email = x.IdUsuarioNavigation.Email }
+            }).FirstOrDefault(x => x.IdUsuario == idUsuario);
         }
 
         // MVP - Método de listar todas os pacientes com suas consultas

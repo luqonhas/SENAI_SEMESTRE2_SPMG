@@ -20,8 +20,6 @@ import editar from '../assets/img/consultas-editar.svg';
 import cadastrar from '../assets/img/consultas-cadastrar.svg';
 import ordenar from '../assets/img/consultas-ordenar.svg';
 
-import { menuToggleOff } from '../services/Toggle';
-
 
 
 class Consulta extends Component{
@@ -269,7 +267,7 @@ class Consulta extends Component{
 
     render() {
         return(
-            <div className="consultas-content-background" onClick={menuToggleOff}>
+            <div className="consultas-content-background">
                 <div className="consultas-btns">
                     <button onClick={() => {this.setState({ordenado : !this.state.ordenado}); this.buscarConsultas()}}>Ordenar por data <img src={ordenar} draggable="false" /></button>
                     {

@@ -74,6 +74,8 @@ namespace senai.spmg.webAPI.Controllers
                     new Claim("role", usuarioBuscado.IdTipoUsuario.ToString()),
 
                     new Claim(JwtRegisteredClaimNames.Name, _loginRepository.BuscarNomePorId(usuarioBuscado.IdUsuario)),
+
+                    //new Claim("paciente", _loginRepository.BuscarPacientePorId(usuarioBuscado.IdUsuario).ToString()),
                     };
 
                 // define a chave secreta ao token

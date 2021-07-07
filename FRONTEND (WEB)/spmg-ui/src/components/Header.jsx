@@ -13,6 +13,7 @@ import ponta from '../assets/img/header-submenu-sharp.svg';
 // Services
 import {logout, parseJwt} from '../services/Auth';
 import { menuToggle } from '../services/Toggle';
+import { parse } from '@fortawesome/fontawesome-svg-core';
 
 
 
@@ -30,16 +31,16 @@ class Header extends Component{
                         </div>
 
                         <div className="header-nav">
-                            <img src={start}  />
-                            {/* <div className="header-tag-name">
-                                <p>Bem vindo(a)</p>
-                            </div> */}
+                            {/* <img src={start}  /> */}
+                            <div className="header-tag-name">
+                                <p>{parseJwt().name}</p>
+                            </div>
 
                             {/* <div className="header-tag-middle"></div> */}
-                            <div className="header-tag">
+                            {/* <div className="header-tag">
                                 <p>{parseJwt().role === '1' ? 'administrador' : '' || parseJwt().role === '2' ? 'médico' : '' || parseJwt().role === '3' ? 'paciente' : ''}</p>
-                            </div>
-                            <img src={end}  />
+                            </div> */}
+                            {/* <img src={end}  /> */}
                             <div className="header-avatar" >
                                 <li><a><img src={avatar} className="header-avatar-img" onClick={menuToggle}  /></a>
                                     <div className="header-avatar-submenu-dropdown">
@@ -49,7 +50,7 @@ class Header extends Component{
                                             <div className="header-submenu-op1">
                                                 {/* <img src={user} aria-hidden="true" /> */}
                                                 <div className="far fa-user-circle"></div>
-                                                <li><a href="#">Perfil</a></li>
+                                                <li><Link to="/perfil">Perfil</Link></li>
                                             </div>
                                             <div className="header-submenu-op2">
                                                 <div className="fas fa-columns"></div>
@@ -57,7 +58,7 @@ class Header extends Component{
                                             </div>
                                             <div className="header-submenu-op3">
                                                 <div className="fas fa-cog" aria></div>
-                                                <li><a href="#">Configurações</a></li>
+                                                <li><Link to="/conta/editar">Configurações</Link></li>
                                             </div>
                                             <div className="header-submenu-saida">
                                                 <li><Link onClick={logout} to="/">Sair</Link></li>

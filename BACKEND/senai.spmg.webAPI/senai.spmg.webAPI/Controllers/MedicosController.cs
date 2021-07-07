@@ -63,6 +63,22 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [Authorize]
+        [HttpGet("perfil")]
+        public IActionResult GetProfile()
+        {
+            try
+            {
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                return Ok(_medicoRepository.ListarPerfil(idUsuario));
+            }
+            catch (Exception codErro)
+            {
+                return BadRequest(codErro);
+            }
+        }
+
         // MVP - Método para cadastrar
         [Authorize(Roles = "1")]
         [HttpPost("cadastrar")]

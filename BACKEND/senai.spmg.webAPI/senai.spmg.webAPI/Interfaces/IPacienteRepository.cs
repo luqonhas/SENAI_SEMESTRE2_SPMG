@@ -22,6 +22,16 @@ namespace senai.spmg.webAPI.Interfaces
 
         void Deletar(int id);
 
+        List<Paciente> ListarPerfil(int id);
+
+        bool AlterarTelefone(int id, Paciente telefone);
+
+        bool AlterarEndereco(int id, Paciente endereco);
+
+        Paciente BuscarUsuarioPorId(int idUsuario);
+
+        Paciente BuscarPorTelefone(string telefone);
+
         // MÉTODO NÃO NECESSÁRIO!
         // List<Paciente> ListarConsultas(int id);
     }

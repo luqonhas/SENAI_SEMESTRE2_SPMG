@@ -40,10 +40,11 @@ namespace senai.spmg.webAPI.Domains
         [Required(AllowEmptyStrings = false, ErrorMessage = "O Paciente precisa de uma data de nascimento")]
         public DateTime DataNascimento { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
         // [RegularExpression("^[(]{1}[1-9]{2}[)]{1}[0-9]{4,5}[-]{1}[0-9]{3,4}$", ErrorMessage = "Por favor, preencha o campo no formato: (00)1234-5678 ou (00)91234-5678!")]
         // [RegularExpression(@"^\(?([0-9]{5})\)?[-.]?([0-9]{4})$", ErrorMessage = "Número de telefone inválido!")]
-        [StringLength(maximumLength: 11, MinimumLength = 11, ErrorMessage = "O número de telefone precisa ter exatos 11 números!")]
+        // [DataType(DataType.PhoneNumber)]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "O telefone deve conter apenas números!")]
+        // [StringLength(maximumLength: 11, MinimumLength =  11, ErrorMessage = "O número de telefone precisa ter exatos 11 números!")]
         public string TelefonePaciente { get; set; }
 
         [StringLength(maximumLength: 250, MinimumLength = 1, ErrorMessage = "O endereço inserido é muito grande!")]

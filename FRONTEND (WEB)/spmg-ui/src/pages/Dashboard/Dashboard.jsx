@@ -183,7 +183,8 @@ class Dashboard extends Component{
                     <div className="dash-cards-background">
                         {/* CONSULTAS */}
                         <div className="dash-card-consultas">
-                            <Link to={RoleLinkConsultas()} className="dash-consultas-link">
+                            {/* <Link to={RoleLinkConsultas()} className="dash-consultas-link"> */}
+                            <Link to="/consultas" className="dash-consultas-link">
                                 <div className="dash-consultas-texto">
                                     <p>{this.state.qntdConsultas}</p>
                                     <p>consultas</p>
@@ -195,19 +196,19 @@ class Dashboard extends Component{
                         </div>
 
                         {
-                                    parseJwt().role === '1' ?
-                                    // MÉDICOS
-                                    <div className="dash-card-medicos">
-                                        <Link to={RoleLinkConsultas()} className="dash-medicos-link">
-                                            <div className="dash-medicos-texto">
-                                                <p>{this.state.qntdMedicos}</p>
-                                                <p>médicos</p>
-                                            </div>
-                                            <div className="dash-medicos-img">
-                                                <img draggable="false" src={medicos} />
-                                            </div>
-                                        </Link>
-                                    </div> : ''
+                            parseJwt().role === '1' ?
+                            // MÉDICOS
+                            <div className="dash-card-medicos">
+                                <Link to={RoleLinkConsultas()} className="dash-medicos-link">
+                                    <div className="dash-medicos-texto">
+                                        <p>{this.state.qntdMedicos}</p>
+                                        <p>médicos</p>
+                                    </div>
+                                    <div className="dash-medicos-img">
+                                        <img draggable="false" src={medicos} />
+                                    </div>
+                                </Link>
+                            </div> : ''
                         }
                         
                         {

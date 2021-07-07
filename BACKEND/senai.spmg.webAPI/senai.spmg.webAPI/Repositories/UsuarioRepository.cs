@@ -136,6 +136,38 @@ namespace senai.spmg.webAPI.Repositories
             return "Administrador";
         }
 
+        public int BuscarPacientePorId(int id)
+        {
+            Paciente pacienteBuscado = ctx.Pacientes.FirstOrDefault(x => x.IdUsuario == id);
+
+            if (pacienteBuscado != null)
+            {
+                return pacienteBuscado.IdPaciente;
+            }
+
+            return 0;
+        }
+
+        public bool AlterarEmail(int id, Usuario email)
+        {
+            Usuario usuarioBuscado = ctx.Usuarios.FirstOrDefault(x => x.IdUsuario == id);
+
+            if (usuarioBuscado == null)
+            {
+                return false;
+            }
+
+            if (email.Email != null)
+            {
+                usuarioBuscado.Email = email.Email;
+            }
+
+            ctx.Update(usuarioBuscado);
+
+            ctx.SaveChanges();
+
+            return true;
+        }
 
     }
 }

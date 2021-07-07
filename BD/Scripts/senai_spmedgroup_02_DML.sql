@@ -108,3 +108,7 @@ GO
 UPDATE Pacientes
 SET Pacientes.dataNascimento = '01/10/1983'
 WHERE Pacientes.idPaciente = 1;
+
+UPDATE Pacientes
+SET Pacientes.telefonePaciente = ''
+WHERE Pacientes.idPaciente = 7;

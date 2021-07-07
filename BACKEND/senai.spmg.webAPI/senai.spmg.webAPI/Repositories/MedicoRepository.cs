@@ -91,6 +91,16 @@ namespace senai.spmg.webAPI.Repositories
             return ctx.Medicos.Include(x => x.Consulta).ToList();
         }
 
+        public List<Medico> ListarPerfil(int id)
+        {
+            return ctx.Medicos
+                .Include(x => x.IdClinicaNavigation)
+                .Include(x => x.IdUsuarioNavigation)
+                .Include(x => x.IdEspecialidadeNavigation)
+                .Where(x => x.IdUsuario == id)
+                .ToList();
+        }
+
         // MVP - Método de listar todos os médicos com suas consultas
         // MÉTODO NÃO NECESSÁRIO!
         /*

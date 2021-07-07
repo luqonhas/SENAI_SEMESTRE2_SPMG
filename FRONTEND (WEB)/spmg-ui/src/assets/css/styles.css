@@ -55,6 +55,47 @@ img{
 
 
 
+/* NOTFOUND */
+
+.notfound-background{
+    width: 100%;
+    height: 780px;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    user-select: none;
+    font-size: 30px;
+}
+
+.notfound{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.notfound a{
+    color: #364958;
+    transition: .5s ease-out;
+}
+
+.notfound a:hover{
+    color: #37D09D;
+    transition: .2s;
+}
+
+.notfound img{
+    width: 500px;
+    height: 500px;
+}
+
+
+
 /* LOGIN */
 
 .login{
@@ -394,7 +435,6 @@ img{
     position: absolute;
     visibility: hidden;
     z-index: 1;
-    /* transition: .5s; */
     opacity: 0;
 }
 
@@ -402,6 +442,7 @@ img{
     /* display: block; */
     visibility: visible;
     opacity: 1;
+    /* animation: slideUp 2s; */
 }
 
 .header-ponta{
@@ -582,9 +623,10 @@ img{
 
 .header-tag-name{
     margin-right: 3px;
-    background-color: #364958;
+    /* background-color: #364958; */
     padding: 4px 10px 4px 10px;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
+    font-weight: 800;
 }
 
 .header-tag-middle{
@@ -601,11 +643,12 @@ img{
 @keyframes slideUp{
     0% {
         opacity: 0;
-        transform: translate(15px 0 0 0);
+
     }
 
     100% {
-        opacity: 1;
+        opacity: 1 20s ease-in;
+        transform: translate(20px 0 0 0);
         transform: none;
     }
 }
@@ -650,7 +693,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -706,7 +749,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -762,7 +805,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -818,7 +861,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -874,7 +917,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -930,7 +973,7 @@ img{
     width: 300px;
     height: 160px;
     border-radius: 10px;
-    border: 1px solid #364958;
+    border: 1px solid #ccc;
     background-color: white;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     display: flex;
@@ -1354,8 +1397,8 @@ img{
     align-items: center;
     padding: 5px;
     margin-top: 2px;
-    border-bottom-left-radius: 9px;
-    border-bottom-right-radius: 9px;
+    /* border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px; */
 }
 
 .consultas-card-medico-especialidade p{
@@ -1701,4 +1744,758 @@ img{
 
 .modal-consulta-cancelar button:disabled{
     background-color: #364958
+}
+
+
+
+/* PERFIL */
+
+.perfil-background{
+    max-width: 960px;
+    /* background-color: red; */
+    height: 442px;
+    margin: 0 auto;
+}
+
+.perfil-titulo{
+    background-color: #364958;
+    padding: 0 12px;
+    width: 120px;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.perfil-titulo h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: white;
+    font-weight: 800;
+}
+
+.perfil-content-background{
+    width: 100%;
+    height: 382px;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/* CARD PERFIL MAIN */
+
+.perfil-card-main{
+    width: 230px;
+    height: 382px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil-card-main-background{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    /* background-color: red; */
+    height: 100%;
+}
+
+.perfil-card-main-foto{
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: gray;
+    margin-bottom: 15px;
+    user-select: none;
+    display: block;
+}
+
+.perfil-card-main-bottom-foto{
+    height: 175px;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.perfil-card-main-text{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    user-select: none;
+}
+
+.perfil-card-main-text p:nth-child(1){
+    font-size: 20px;
+    color: #364958;
+}
+
+.perfil-card-main-text p:nth-child(2){
+    font-size: 14px;
+    color: #9D9D9D;
+}
+
+.perfil-card-main-btn{
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.perfil-card-main-btn a{
+    background-color: #37D09D;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 26px;
+    font-family: 'Montserrat', sans-serif;
+    justify-self: flex-end;
+    align-self: flex-end;
+    user-select: none;
+}
+
+
+/* CARD PERFIL INFO */
+
+.perfil-card-info{
+    width: 480px;
+    height: 382px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+}
+
+.perfil-card-info-title{
+    font-size: 20px;
+    font-weight: 600;
+    color: #364958;
+    user-select: none;
+    margin-bottom: 30px;
+}
+
+.perfil-card-info-inputs{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.perfil-card-info-inputs-title{
+    font-size: 14px;
+    color: #364958;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 2.5px;
+}
+
+/* CRM */
+
+.perfil-card-info-inputs-crm input{
+    width: 220px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-right: 18px;
+    margin-bottom: 15px;
+}
+
+/* CLÍNICA */
+.perfil-card-info-inputs-clinica input{
+    width: 200px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+/* ESPECIALIDADE */
+.perfil-card-info-inputs-especialidade input{
+    width: 440px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+/* E-MAIL */
+.perfil-card-info-inputs-email input{
+    width: 440px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+/* RG */
+.perfil-card-info-inputs-rg input{
+    width: 210px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-right: 18px;
+    margin-bottom: 15px;
+}
+
+/* CPF */
+.perfil-card-info-inputs-cpf input{
+    width: 210px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+/* TELEFONE */
+.perfil-card-info-inputs-telefone input{
+    width: 210px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-right: 18px;
+    margin-bottom: 15px;
+}
+
+/* DATA DE NASCIMENTO */
+.perfil-card-info-inputs-data input{
+    width: 210px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+/* ENDEREÇO */
+.perfil-card-info-inputs-endereco input{
+    width: 440px;
+    height: 40px;
+    padding: 12px 15px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #9D9D9D;
+    font-weight: 600;
+    user-select: none;
+    margin-bottom: 15px;
+}
+
+
+
+/* CARD PERFIL EMBLEMAS */
+
+.perfil-card-emblemas{
+    width: 210px;
+    height: 382px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.perfil-card-emblemas-title{
+    width: 100%;
+    height: 60px;
+    background-color: #364958;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-card-emblemas-title p{
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    user-select: none;
+}
+
+.perfil-card-emblemas-emblema-background{
+    /* background-color: red; */
+    width: 100%;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.perfil-card-emblemas-emblema{
+    width: 165px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    transition: .2s;
+}
+
+.perfil-card-emblemas-emblema:hover{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.10);
+}
+
+.perfil-card-emblemas-emblema-base-img{
+    width: 100%;
+    height: 150px;
+    /* background-color: gray; */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-card-emblemas-emblema-img{
+    width: 120px;
+    height: 120px;
+    /* background-color: gray; */
+}
+
+.perfil-card-emblemas-emblema-desc{
+    /* background-color: red; */
+    height: 50px;
+    padding: 5px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    user-select: none;
+}
+
+.perfil-card-emblemas-emblema-desc p{
+    font-size: 12px;
+    font-weight: 600;
+    color: #9D9D9D;
+}
+
+.perfil-card-emblemas-btn{
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+.perfil-card-emblemas-btn button{
+    background-color: #1481BA;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 8px 10px;
+    font-family: 'Montserrat', sans-serif;
+    justify-self: flex-end;
+    align-self: flex-end;
+}
+
+
+
+/* CONFIGURAÇÕES */
+
+.settings-background{
+    max-width: 960px;
+    /* background-color: red; */
+    height: 442px;
+    margin: 0 auto;
+}
+
+.settings-titulo{
+    background-color: #364958;
+    padding: 0 12px;
+    width: 300px;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+.settings-titulo h1{
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    color: white;
+    font-weight: 800;
+}
+
+.settings-content-background{
+    width: 100%;
+    height: 382px;
+    /* background-color: blue; */
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+/* SETTINGS BOTÕES */
+
+.settings-content-btn-main{
+    width: 300px;
+    height: 100%;
+    /* background-color: yellow; */
+}
+
+.settings-content-btn-link{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20px 15px;
+    /* background-color: red; */
+    border-radius: 9px;
+}
+
+.settings-content-btn-link p:nth-child(1){
+    font-weight: 600;
+    color: #364958;
+    font-size: 20px;
+}
+
+.settings-content-btn-link p:nth-child(2){
+    font-weight: 600;
+    color: #9D9D9D;
+    font-size: 14px;
+}
+
+.settings-content-btn-link p{
+    user-select: none;
+}
+
+
+
+/* BOTÃO EDITAR PERFIL */
+.settings-content-btn{
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.10);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1px;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+
+
+.settings-content-btn.settings-btn-active{
+    border: 2px solid #37D09D;
+    padding: 0px;
+}
+
+
+
+/* FORM EDITAR PERFIL - PACIENTE */
+.settings-content-editar{
+    width: 630px;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.settings-content-editar-foto{
+    background-color: white;
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.10);
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: space-between;
+}
+
+.settings-content-editar-foto-icon-text{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.settings-content-editar-foto-base-icon{
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+    border-radius: 75px;
+    margin-right: 20px;
+}
+
+.settings-content-editar-foto-text p:nth-child(1){
+    font-weight: 600;
+    color: #364958;
+    font-size: 20px;
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.settings-content-editar-foto-text p:nth-child(2){
+    font-weight: 600;
+    color: #9D9D9D;
+    font-size: 14px;
+    user-select: none;
+}
+
+.settings-content-editar-foto-btn::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.settings-content-editar-foto-btn::before {
+    content: 'Alterar Foto';
+    display: inline-block;
+    -webkit-user-select: none;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #38D19E;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 6px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.settings-content-editar-foto-btn[type='file'] {
+    width: 158px;
+    overflow: none;
+    color: transparent;
+}
+
+.settings-content-editar-info{
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.10);
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 1s forwards;
+}
+
+.settings-content-editar-info-title-area{
+    font-size: 20px;
+    font-weight: 600;
+    color: #364958;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.settings-content-editar-info-inputs{
+    /* background-color: red; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings-content-editar-info-inputs-text{
+    font-size: 14px;
+    font-weight: 600;
+    color: #364958;
+    margin-bottom: 4px;
+    user-select: none;
+}
+
+/* EMAIL */
+.settings-content-editar-info-inputs-email input{
+    width: 350px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 9px 15px;
+    border-radius: 3px;
+    color: #9D9D9D;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.settings-content-editar-info-inputs-email input:focus{
+    border: 2px solid #ccc;
+    padding: 9px 14px;
+    outline: none;
+    color: #8d8d8d;
+}
+
+
+
+/* EMAIL (MED/ADM) */
+.settings-content-editar-info-inputs-email-med-adm input{
+    width: 590px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 9px 15px;
+    border-radius: 3px;
+    color: #9D9D9D;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.settings-content-editar-info-inputs-email-med-adm input:focus{
+    border: 2px solid #ccc;
+    padding: 9px 14px;
+    outline: none;
+    color: #8d8d8d;
+}
+
+
+
+/* TELEFONE */
+.settings-content-editar-info-inputs-telefone input{
+    width: 215px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 9px 15px;
+    border-radius: 3px;
+    color: #9D9D9D;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.settings-content-editar-info-inputs-telefone input::placeholder{
+    color: #9D9D9D;
+}
+
+.settings-content-editar-info-inputs-telefone input:focus{
+    border: 2px solid #ccc;
+    padding: 9px 14px;
+    outline: none;
+    color: #8d8d8d;
+}
+
+
+
+/* ENDEREÇO */
+.settings-content-editar-info-inputs-endereco input{
+    width: 590px;
+    height: 40px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 9px 15px;
+    border-radius: 3px;
+    color: #9D9D9D;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.settings-content-editar-info-inputs-endereco input:focus{
+    border: 2px solid #ccc;
+    padding: 9px 14px;
+    outline: none;
+    color: #8d8d8d;
+}
+
+
+
+/* BUTTON */
+.settings-content-editar-info button{
+    width: 100px;
+    height: 40px;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-self: center;
+    border: none;
+    background-color: #1481BA;
+    border-radius: 3px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+
+.settings-content-editar-info button:disabled{
+    background-color: #AED4E9;
+}
+
+
+
+/* FORM ALTERAR SENHA */
+.settings-content-altsenha{
+    width: 630px;
+    background-color: green;
 }
