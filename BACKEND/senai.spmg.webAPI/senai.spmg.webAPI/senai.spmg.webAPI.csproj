@@ -20,6 +20,16 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.11.0" />
   </ItemGroup>
 
+	<ItemGroup>
+		<Folder Include="FotosBackUp\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="FotosPerfil\user.png">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
   <PropertyGroup>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <NoWarn>$(NoWarn);1591</NoWarn>

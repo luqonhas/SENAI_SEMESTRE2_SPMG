@@ -1,4 +1,5 @@
-﻿using senai.spmg.webAPI.Domains;
+﻿using Microsoft.AspNetCore.Http;
+using senai.spmg.webAPI.Domains;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,5 +32,10 @@ namespace senai.spmg.webAPI.Interfaces
         int BuscarPacientePorId(int id);
 
         bool AlterarEmail(int id, Usuario email);
+
+        string UploadFoto(IFormFile arquivo, string savingFolder);
+
+        string AlterarFoto(IFormFile novaFoto, int idUsuario);
+
     }
 }

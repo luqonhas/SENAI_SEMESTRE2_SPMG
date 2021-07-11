@@ -112,3 +112,11 @@ WHERE Pacientes.idPaciente = 1;
 UPDATE Pacientes
 SET Pacientes.telefonePaciente = ''
 WHERE Pacientes.idPaciente = 7;
+
+UPDATE Usuarios
+SET Usuarios.foto = 'user.png'
+WHERE Usuarios.idUsuario > 0;
+
+UPDATE Usuarios
+SET email = 'adm@adm.com'
+WHERE idUsuario = 11;

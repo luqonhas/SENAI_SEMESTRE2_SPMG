@@ -28,6 +28,7 @@ namespace senai.spmg.webAPI.Domains
         [StringLength(maximumLength: 200, MinimumLength = 6, ErrorMessage = "A senha inserida é muito curta ou muito longa!")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Campo 'senha' obrigatório!")]
         public string Senha { get; set; }
+        public string Foto { get; set; }
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }
         public virtual ICollection<Medico> Medicos { get; set; }

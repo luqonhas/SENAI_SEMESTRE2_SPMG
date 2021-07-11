@@ -593,9 +593,19 @@ img{
     animation: slideUp .3s;
 } */
 
+.header-avatar-img-base{
+    width: 40px;
+    height: 40px;
+    border-radius: 75px;
+}
+
 .header-avatar-img{
+    width: 40px;
+    height: 40px;
     border-radius: 25px;
+    object-fit: cover;
     cursor: pointer;
+    background-color: #ccc;
 }
 
 .header-content{
@@ -1813,14 +1823,21 @@ img{
     width: 150px;
     height: 150px;
     border-radius: 75px;
-    background-color: gray;
+    background-color: #ccc;
     margin-bottom: 15px;
     user-select: none;
     display: block;
 }
 
+.perfil-card-main-foto img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
 .perfil-card-main-bottom-foto{
-    height: 175px;
+    height: 168px;
     /* background-color: red; */
     display: flex;
     flex-direction: column;
@@ -2279,18 +2296,25 @@ img{
     justify-content: space-between;
 }
 
-.settings-content-editar-foto-icon-text{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+.settings-content-editar-foto-icon-img img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .settings-content-editar-foto-base-icon{
     width: 100px;
     height: 100px;
-    background-color: gray;
-    border-radius: 75px;
+    background-color: #ccc;
+    border-radius: 50%;
     margin-right: 20px;
+}
+
+.settings-content-editar-foto-icon-text{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .settings-content-editar-foto-text p:nth-child(1){

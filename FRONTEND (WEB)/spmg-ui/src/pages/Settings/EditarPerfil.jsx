@@ -1,10 +1,10 @@
 // Libs
 import React, {Component} from 'react';
 import axios from "axios";
-import {Link} from 'react-router-dom';
 
 // Services
 import {parseJwt} from '../../services/Auth';
+import {uri} from '../../services/Connection';
 
 // Components
 import Header from '../../components/Header';
@@ -41,7 +41,6 @@ class Editar extends Component{
             email : '',
             telefone : '',
             endereco : '',
-            idUsuarioAlterado : 0,
 
             mensagemEmail : '',
             mensagemTelefone : '',
@@ -105,18 +104,11 @@ class Editar extends Component{
 
 
 
-    limparCampos = () => {
-        this.setState({ mensagemEmail : '' })
-        this.setState({ mensagemTelefone : '' })
-        this.setState({ mensagemEndereco : '' })
-    }
-
     atualizarEstadoEmail = async (event) => {
         await this.setState({
             [event.target.name] : event.target.value
         })
-
-        this.limparCampos()
+        console.log(this.state.email)
     }
 
 
@@ -150,6 +142,31 @@ class Editar extends Component{
 
 
 
+    alterarFoto = (event) => {
+        event.preventDefault();
+
+        let formData = new FormData();
+        formData.append("arquivo", event.target.files[0]);
+
+        fetch('http://localhost:5000/api/usuarios/foto/alterar', {
+            method: "PUT",
+            headers: {
+                authorization: 'Bearer ' + localStorage.getItem("user-token"),
+            },
+            body: formData,
+        })
+
+        .then((response) => response.json())
+
+        .then(console.log("stonks"))
+
+        .then(window.location.reload(false))
+
+        .catch(erro => console.log(erro));
+    }
+
+
+
     componentDidMount(){
         this.buscarPacientes();
         this.buscarMedicos();
@@ -173,13 +190,19 @@ class Editar extends Component{
 
                         <div className="settings-content-editar">
 
-                            <div className="settings-content-editar-foto">
+                            <form className="settings-content-editar-foto">
 
                                 <div className="settings-content-editar-foto-icon-text">
                                     <div className="settings-content-editar-foto-base-icon">
-                                        <div className="settings-content-editar-foto-icon-img">
-                                            
-                                        </div>
+                                        {
+                                            this.state.listaUsuarios.map(foto => {
+                                                return(
+                                                    <div className="settings-content-editar-foto-icon-img">
+                                                        <img src={`${uri}/FotosPerfil/${foto.foto}`} draggable="false"  />
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </div>
 
                                     <div className="settings-content-editar-foto-text">
@@ -188,8 +211,8 @@ class Editar extends Component{
                                     </div>
                                 </div>
 
-                                <input type="file" className="settings-content-editar-foto-btn" />
-                            </div>
+                                <input type="file" id="inputImage" onChange={(event) => {this.alterarFoto(event)}} className="settings-content-editar-foto-btn" />
+                            </form>
 
 
                             <form className="settings-content-editar-info" onSubmit={this.editarEmail}>
@@ -201,7 +224,7 @@ class Editar extends Component{
                                             <>
                                                 {
                                                     parseJwt().role === '3' ?
-                                                    <div className="settings-content-editar-info-inputs">
+                                                    <div key={paciente.idUsuario} className="settings-content-editar-info-inputs">
                                                         <div className="settings-content-editar-info-inputs-email">
                                                             <p className="settings-content-editar-info-inputs-text">E-mail</p>
                                                             <input minLength="8" value={paciente.idUsuarioNavigation.email} type="text" onChange={this.atualizarEstadoEmail} id={paciente.idUsuario} name="email" />
@@ -232,7 +255,7 @@ class Editar extends Component{
                                                     <div className="settings-content-editar-info-inputs">
                                                         <div className="settings-content-editar-info-inputs-email-med-adm">
                                                             <p className="settings-content-editar-info-inputs-text">E-mail</p>
-                                                            <input minLength="8" value={user.email} type="text" onChange={this.atualizarEstadoEmail} id={user.idUsuario} name="email" />
+                                                            <input minLength="8" type="email" onChange={this.atualizarEstadoEmail} id={user.idUsuario} value={user.email} name="email" />
                                                         </div>
                                                     </div> : ''
                                                 }

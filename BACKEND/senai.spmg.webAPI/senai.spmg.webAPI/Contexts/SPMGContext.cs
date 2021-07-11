@@ -9,6 +9,8 @@ namespace senai.spmg.webAPI.Contexts
 {
     public partial class SPMGContext : DbContext
     {
+        // Scaffold-DbContext "Data Source=DESKTOP-HMTUR0P; initial catalog=SPMG_DBFIRST; user Id=SA; pwd=Soufoda2;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Domains -ContextDir Contexts -Context SPMGContext
+        
         public SPMGContext()
         {
         }
@@ -31,7 +33,7 @@ namespace senai.spmg.webAPI.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                // To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                // #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-HMTUR0P; initial catalog=SPMG_DBFIRST; user Id=SA; pwd=Soufoda2;");
             }
         }
@@ -296,6 +298,12 @@ namespace senai.spmg.webAPI.Contexts
                     .HasMaxLength(200)
                     .IsUnicode(false)
                     .HasColumnName("email");
+
+                entity.Property(e => e.Foto)
+                    .HasMaxLength(40)
+                    .IsUnicode(false)
+                    .HasColumnName("foto")
+                    .HasDefaultValueSql("('user.png')");
 
                 entity.Property(e => e.IdTipoUsuario).HasColumnName("idTipoUsuario");
 

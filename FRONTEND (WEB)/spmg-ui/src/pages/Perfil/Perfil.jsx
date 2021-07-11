@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 
 // Services
 import {parseJwt} from '../../services/Auth';
+import { uri } from '../../services/Connection';
 
 // Components
 import Header from '../../components/Header';
@@ -62,7 +63,8 @@ class Perfil extends Component{
         super(props);
         this.state = {
             listaPacientes : [],
-            listaMedicos : []
+            listaMedicos : [],
+            listaUsuarios : []
         }
     }
 
@@ -98,9 +100,26 @@ class Perfil extends Component{
         .catch(erro => {console.log(erro)})
     }
 
+    buscarUsuarios = () => {
+        axios('http://localhost:5000/api/usuarios/perfil', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('user-token')
+            }
+        })
+
+        .then(response => {
+            if(response.status === 200){
+                this.setState({ listaUsuarios : response.data})
+            }
+        })
+
+        .catch(erro => {console.log(erro)})
+    }
+
     componentDidMount(){
         this.buscarPacientes();
         this.buscarMedicos();
+        this.buscarUsuarios();
     }
 
     render(){
@@ -115,9 +134,15 @@ class Perfil extends Component{
 
                     <div className="perfil-content-background">
                         <div className="perfil-card-main">
-                            <div className="perfil-card-main-foto">
-                                <img draggable="false" src={profilepic} />
-                            </div>
+                            {
+                                this.state.listaUsuarios.map(foto => {
+                                    return(
+                                        <div className="perfil-card-main-foto">
+                                            <img draggable="false" src={`${uri}/FotosPerfil/${foto.foto}`} />
+                                        </div>
+                                    )
+                                })
+                            }
 
                             <div className="perfil-card-main-bottom-foto">
                                 <div className="perfil-card-main-text">
@@ -141,14 +166,23 @@ class Perfil extends Component{
                             
                             
                             {/* ADM */}
+
+                                
                             {
-                                parseJwt().role === '1' ? 
-                                <div className="perfil-card-info-inputs">
-                                    <div className="perfil-card-info-inputs-email">
-                                        <p className="perfil-card-info-inputs-title">E-mail</p>
-                                        <input value={parseJwt().email} readOnly disabled type="text" />
-                                    </div>
-                                </div> : ''
+                                this.state.listaUsuarios.map(user => {
+                                    return(
+                                        <>{
+                                            parseJwt().role === '1' ? 
+                                            <div className="perfil-card-info-inputs">
+                                                <div className="perfil-card-info-inputs-email">
+                                                    <p className="perfil-card-info-inputs-title">E-mail</p>
+                                                    <input value={user.email} readOnly disabled type="text" />
+                                                </div>
+                                            </div> : ''
+                                        }
+                                        </>
+                                    )
+                                })
                             }
 
                             
@@ -177,7 +211,7 @@ class Perfil extends Component{
                                                     
                                                     <div className="perfil-card-info-inputs-email">
                                                         <p className="perfil-card-info-inputs-title">E-mail</p>
-                                                        <input value={parseJwt().email} readOnly disabled type="text" />
+                                                        <input value={medico.idUsuarioNavigation.email} readOnly disabled type="text" />
                                                     </div>
                                                 </div> : ''
                                             }
@@ -221,7 +255,7 @@ class Perfil extends Component{
 
                                                     <div className="perfil-card-info-inputs-email">
                                                         <p className="perfil-card-info-inputs-title">E-mail</p>
-                                                        <input value={parseJwt().email} readOnly disabled type="text" />
+                                                        <input value={paciente.idUsuarioNavigation.email} readOnly disabled type="text" />
                                                     </div>
                                                 </div> : ''
                                             }

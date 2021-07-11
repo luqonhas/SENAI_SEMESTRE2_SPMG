@@ -21,8 +21,12 @@ CREATE TABLE Usuarios
 	idUsuario INT PRIMARY KEY IDENTITY,
 	idTipoUsuario INT FOREIGN KEY REFERENCES TipoUsuarios(idTipoUsuario),
 	email VARCHAR(200) UNIQUE NOT NULL,
-	senha VARCHAR(200) NOT NULL
+	senha VARCHAR(200) NOT NULL,
 );
+GO
+
+ALTER TABLE Usuarios
+ADD foto VARCHAR(40) DEFAULT('user.png');
 GO
 
 

@@ -187,6 +187,62 @@ namespace senai.spmg.webAPI.Controllers
             }
         }
 
+        [HttpPost("foto/upload")]
+        public IActionResult UploadFoto([FromForm] string request)
+        {
+            try
+            {
+                // variavel "arquivo" igual a uma execução de uma requisição de um formulário que inclui os arquivos junto
+                var arquivo = Request.Form.Files[0];
+
+                // variavel "nomeArquivo" é igual ao nome do arquivo de uma requisição de arquivos
+                var nomeArquivo = arquivo.FileName;
+                // string "extensao" é igual a extensão do arquivo
+                string extensao = nomeArquivo.Split('.')[1].Trim();
+
+                // caso a extensão seja desses tipos...
+                if (extensao == "jpg" || extensao == "png" || extensao == "webp" || extensao == "jpeg" || extensao == "svg" || extensao == "jfif" || extensao == "tiff")
+                {
+                    // uma variavel "upload" será igual ao método de upload do repository com as informações tragas
+                    var upload = _usuarioRepository.UploadFoto(arquivo, "FotosBackUp");
+                    // e retorna o "upload"
+                    return Ok(upload);
+                }
+                // caso contrário, retorna uma mensagem de erro
+                return BadRequest("Formato não aceito!");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [Authorize]
+        [HttpPut("foto/alterar")]
+        public IActionResult AlterarFoto([FromForm] string request)
+        {
+            // int "idUsuario" igual ao id do usuário do token
+            int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+            // variavel "arquivo" igual a uma execução de uma requisição de um formulário que inclui os arquivos junto
+            var arquivo = Request.Form.Files[0];
+            // variavel "nomeArquivo" é igual ao nome do arquivo de uma requisição de arquivos
+            var nomeArquivo = arquivo.FileName;
+            // string "extensao" é igual a extensão do arquivo
+            string extensao = nomeArquivo.Split('.')[1].Trim();
+
+            // caso a extensão seja desses tipos...
+            if (extensao == "jpg" || extensao == "png" || extensao == "webp" || extensao == "jpeg" || extensao == "svg" || extensao == "jfif" || extensao == "tiff")
+            {
+                // uma variavel "uploadAlterado" será igual ao método de alterar foto do repository com as informações tragas
+                var uploadAlterado = _usuarioRepository.AlterarFoto(arquivo, idUsuario);
+                // e retorna o "uploadAlterado"
+                return Ok(uploadAlterado);
+            }
+            // caso contrário, retorna uma mensagem de erro
+            return BadRequest("Não foi possível atualizar!");
+        }
+
         // MVP - Método para deletar
         [Authorize(Roles = "1")]
         [HttpDelete("deletar/{id}")]
