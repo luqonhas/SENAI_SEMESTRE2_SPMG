@@ -1,2 +1,2 @@
-# SENAI_SEMESTER2_SPMG
-Final project of the 2nd SEMESTER called “SP Medical Group” (SPMG) in progress.
+# SENAI_SEMESTRE2_SPMG
+Projeto final do 2º SEMESTRE chamado “Grupo Médico SP” (SPMG).
