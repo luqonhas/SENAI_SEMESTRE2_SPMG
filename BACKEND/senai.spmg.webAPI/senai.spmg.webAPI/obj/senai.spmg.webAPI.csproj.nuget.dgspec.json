@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\SENAI\\ATVIDADES\\SENAI_SEMESTER2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj": {}
+    "C:\\Users\\apoli\\Desktop\\SENAI_SEMESTRE2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\SENAI\\ATVIDADES\\SENAI_SEMESTER2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj": {
+    "C:\\Users\\apoli\\Desktop\\SENAI_SEMESTRE2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\SENAI\\ATVIDADES\\SENAI_SEMESTER2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj",
+        "projectUniqueName": "C:\\Users\\apoli\\Desktop\\SENAI_SEMESTRE2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj",
         "projectName": "senai.spmg.webAPI",
-        "projectPath": "C:\\Users\\User\\Desktop\\SENAI\\ATVIDADES\\SENAI_SEMESTER2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\SENAI\\ATVIDADES\\SENAI_SEMESTER2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\obj\\",
+        "projectPath": "C:\\Users\\apoli\\Desktop\\SENAI_SEMESTRE2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\senai.spmg.webAPI.csproj",
+        "packagesPath": "C:\\Users\\apoli\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\apoli\\Desktop\\SENAI_SEMESTRE2_SPMG\\BACKEND\\senai.spmg.webAPI\\senai.spmg.webAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\apoli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -101,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -21,10 +21,6 @@
   </ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="FotosBackUp\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<None Update="FotosPerfil\user.png">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
