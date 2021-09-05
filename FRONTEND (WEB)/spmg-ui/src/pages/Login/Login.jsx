@@ -1,17 +1,24 @@
 // Libs
 import { Component } from "react";
 import axios from "axios";
+import ReactWebChat, { createDirectLine, createStyleSet } from 'botframework-webchat';
 
 // Services
 import {parseJwt} from '../../services/Auth';
+
+// Components
+import Modal2 from '../../components/Modal2';
 
 // Imgs
 import background from '../../assets/img/login-background.svg';
 import logo from '../../assets/img/login-logo.svg';
 import doutores from '../../assets/img/login-doutores.svg';
+import help from '../../assets/img/login-help-icon.svg';
+import loading from '../../assets/img/login-chatbot-time.svg';
 
 // Styles
 import '../../assets/css/styles.css';
+import '../../assets/css/chatbot.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -23,7 +30,10 @@ class Login extends Component {
             email : "",
             senha : "",
             erroMensagem : "",
-            isLoading : false
+            isLoading : false,
+
+            idModalChatBot : false,
+            // directLine = new DirectLine({token})
         }
     }
 
@@ -86,6 +96,10 @@ class Login extends Component {
         this.setState({[senha.target.name] : senha.target.value})
     }
 
+    cancelaModal = () => {
+        this.setState({ idModalChatBot : false })
+    }
+
     componentDidMount = () => {
         const inputs = document.querySelectorAll(".login-input");
 
@@ -105,9 +119,26 @@ class Login extends Component {
             input.addEventListener("focus", addcl);
             input.addEventListener("blur", remcl);
         });
+
+        
+        
     }
 
     render() {
+        const styleSet = window.WebChat.createStyleSet({
+            //  bubbleBackground: 'rgba(0, 0, 255, .1)',
+            //  bubbleFromUserBackground: 'rgba(0, 255, 0, .1)',
+             rootHeight: '500px',
+             rootWidth: '350px',
+             backgroundColor: '#400A6F'
+          });
+
+          styleSet.textContent = {
+            ...styleSet.textContent,
+            fontFamily: "'Arial', 'Arial', sans-serif"
+           //  ,
+           //  fontWeight: 'bold'
+         };
         return(
             <main>
                 <div className="login">
@@ -188,12 +219,31 @@ class Login extends Component {
 
                             <div className="login-a2">
                                 <div className="login-linha"></div>
-                                <a href="#" className="login-link-a2">ajuda</a>
+                                <a style={{cursor: 'pointer'}} onClick={() => this.setState({idModalChatBot : true})} className="login-link-a2">ajuda</a>
                             </div>
                         </div>
                     </div>
                     
                 </div>
+
+                <Modal2 isOpen={this.state.idModalChatBot}>
+                    <div className="modal-overlay-chatbot">
+                        <div className="modal-chatbot" id="modal-chatbot" onClick={() => document.getElementById('modal-card-chatbot').click() ? '' : this.cancelaModal()}></div>
+                        
+                        <div id="modal-card-chatbot" className="modal-card-chatbot-background">
+                            <div className="modal-card-chatbot-header">
+                                <img src={help} draggable="false" />
+                                <p>Central de ajuda</p>
+                            </div>
+                            
+                            <div>
+                                <iframe className="chatbot" src="https://webchat.botframework.com/embed/spmg-bot?s=JjkQbeXJb1U.zRk4XDD5G-5VuXDiK1R6yjWOMhlNa4vQxYc1lQEs4ns"></iframe>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </Modal2>
+
             </main>
         )
     }
